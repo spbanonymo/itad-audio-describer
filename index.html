@@ -18,13 +18,13 @@
   header.hero{padding:64px 0 26px; border-bottom:1px solid var(--line)}
   .eyebrow{color:var(--accent); font-weight:600; letter-spacing:.08em; text-transform:uppercase; font-size:12.5px; margin:0 0 12px}
   h1{font-size:2.15rem; line-height:1.18; margin:0 0 12px; letter-spacing:-.01em}
-  .tagline{font-size:1.12rem; color:var(--muted); margin:0 0 22px; max-width:70ch}
-  .abstract{font-size:1rem; color:#333; max-width:74ch; margin:0}
-  .abstract b{color:var(--ink)}
+  .tagline{font-size:1.12rem; color:var(--muted); margin:0; max-width:70ch}
   section.group{padding:40px 0 8px; border-bottom:1px solid var(--line)}
+  .group:last-of-type{border-bottom:none}
   .group h2{font-size:1.28rem; margin:0 0 6px; letter-spacing:-.01em}
   .group .lead{color:var(--muted); margin:0 0 22px; max-width:76ch}
-  .grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px; padding-bottom:16px}
+  .subhead{font-size:.8rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:#9aa2aa; margin:6px 0 12px}
+  .grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px; padding-bottom:8px}
   @media(max-width:720px){ .grid{grid-template-columns:1fr} h1{font-size:1.8rem} }
   a.card{display:flex; flex-direction:column; text-decoration:none; color:inherit;
     background:var(--card); border:1px solid var(--line); border-radius:12px;
@@ -36,7 +36,7 @@
   .card p{font-size:.92rem; color:var(--muted); margin:0 0 14px; flex:1}
   .open{font-size:.9rem; font-weight:600; color:var(--accent)}
   .open::after{content:" \2197"}
-  footer{padding:34px 0 60px; color:var(--muted); font-size:.86rem}
+  .tail{height:56px}
 </style>
 </head>
 <body>
@@ -45,13 +45,11 @@
   <header class="hero">
     <p class="eyebrow">Interactive Demos</p>
     <h1>Iterative Timestamped Audio Describer</h1>
-    <p class="tagline">A perception foundation model that turns raw audio into an explicit, timestamped, speaker-attributed structured description &mdash; then reasons and generates from that description alone.</p>
-    <p class="abstract">We decouple <b>perception</b> from <b>reasoning</b>. The describer writes what it hears as a readable schema (events, timings, transcript, speaker profile, stress, emotion, acoustics), built up one pass at a time. A frozen text-only model then answers questions from the description, and a generator renders the same description back into controllable audio. Each card below opens a live, audio-synced viewer.</p>
+    <p class="tagline">A perception foundation model that turns raw audio into an explicit, timestamped, speaker-attributed structured description.</p>
   </header>
 
   <section class="group">
     <h2>1&nbsp;&middot;&nbsp;The Describer: iterative structured perception</h2>
-    <p class="lead">One clip, described pass by pass. A structural caption is written first, then each speech attribute is layered on, each pass conditioned on the previous output through the Instruction-Input-Output format.</p>
     <div class="grid">
       <a class="card" href="viewers/describer_passes.html">
         <span class="tag">Multi-pass describing</span>
@@ -69,19 +67,44 @@
   </section>
 
   <section class="group">
-    <h2>2&nbsp;&middot;&nbsp;Generation: description &rarr; controllable audio</h2>
+    <h2>2&nbsp;&middot;&nbsp;Understanding: describe, then reason</h2>
+    <p class="lead">The description is read by a frozen text-only reasoner that never hears the audio, so downstream accuracy measures how much the description actually captures.</p>
+
+    <div class="subhead">Spoken audio</div>
+    <div class="grid">
+      <a class="card" href="viewers/understand_mmsu.html">
+        <span class="tag">MMSU</span>
+        <h3>Describe-then-reason on spoken audio</h3>
+        <p>Five clips where the evidence for the answer is present in the description: the model's structured description, and the answer a frozen reasoner picks from that description alone (speaker counting, turn counting, non-speech sound, accent, age).</p>
+        <span class="open">Open demo</span>
+      </a>
+    </div>
+
+    <div class="subhead">Audio-visual</div>
+    <div class="grid">
+      <a class="card" href="viewers/av_combined.html">
+        <span class="tag">Daily-Omni &middot; Video-Holmes &middot; WorldSense</span>
+        <h3>Audio-visual reasoning</h3>
+        <p>The audio describer plus an off-the-shelf visual grounder produce one fused description; a frozen reasoner answers from it. Three showcase clips from each of the three benchmarks.</p>
+        <span class="open">Open demo</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="group">
+    <h2>3&nbsp;&middot;&nbsp;Generation: description &rarr; controllable audio</h2>
     <p class="lead">The same structured description is renderable. A text-to-audio generator conditioned on it reproduces event timing and gives explicit, zero-shot control over emphasis and speaker attributes.</p>
     <div class="grid">
       <a class="card" href="viewers/gen_temporal_grounding.html">
         <span class="tag">Temporal grounding</span>
         <h3>Events land at the stated times</h3>
-        <p>Audio generated from a caption places each event at its timestamp. Two frame-level localizers (FLAM, PE-A-Frame) compare against a no-timestamp baseline, with the original recording as reference.</p>
+        <p>Audio generated from a caption places each event at its timestamp. Two frame-level localizers (FLAM, PE-A-Frame) compare against a no-timestamp baseline, with the original recording as reference. Showing the five most on-cue scenes.</p>
         <span class="open">Open demo</span>
       </a>
       <a class="card" href="viewers/gen_emphasis.html">
         <span class="tag">Word-level emphasis</span>
         <h3>Emphasis follows the marker</h3>
-        <p>Move the emphasis marker across words in the caption, regenerate, and re-detect the stressed word: the synthesized emphasis tracks the commanded word.</p>
+        <p>Move the emphasis marker across words in the caption, regenerate, and re-detect the stressed word: the synthesized emphasis tracks the commanded word. Showing the five with the highest WhiStress hit-rate.</p>
         <span class="open">Open demo</span>
       </a>
       <a class="card" href="viewers/gen_attributes.html">
@@ -99,34 +122,7 @@
     </div>
   </section>
 
-  <section class="group">
-    <h2>3&nbsp;&middot;&nbsp;Extension: audio-visual reasoning</h2>
-    <p class="lead">The audio describer plugs into an off-the-shelf visual grounder, and a frozen reasoner answers from the fused audio-visual description alone. A few showcase clips per benchmark.</p>
-    <div class="grid">
-      <a class="card" href="viewers/av_dailyomni.html">
-        <span class="tag">Daily-Omni</span>
-        <h3>Everyday audio-visual scenes</h3>
-        <p>Video, the fused audio-visual description, and per-question answers with gold comparisons.</p>
-        <span class="open">Open demo</span>
-      </a>
-      <a class="card" href="viewers/av_videoholmes.html">
-        <span class="tag">Video-Holmes</span>
-        <h3>Long-form suspense reasoning</h3>
-        <p>One to five minute films: a windowed audio-visual description feeds multi-option reasoning questions.</p>
-        <span class="open">Open demo</span>
-      </a>
-      <a class="card" href="viewers/av_worldsense.html">
-        <span class="tag">WorldSense</span>
-        <h3>Real-world, eight domains</h3>
-        <p>A real-world audio-visual benchmark across eight domains: fused description and four-option answers.</p>
-        <span class="open">Open demo</span>
-      </a>
-    </div>
-  </section>
-
-  <footer>
-    Interactive viewers run entirely in the browser from local assets. Understanding demos (describe-then-reason on MMSU and MSU-Bench) are being added. This page accompanies the paper submission and is updated as the work develops.
-  </footer>
+  <div class="tail"></div>
 
 </div>
 </body>

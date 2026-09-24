@@ -1,0 +1,760 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Audio-Visual Reasoning</title><style>
+body{background:#0d1117;color:#e6edf3;font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;margin:0;padding:24px 32px}
+h1{font-size:22px;margin:0 0 4px} .sub{color:#8b949e;margin:0 0 20px}
+.sech{color:#f0883e;border-top:1px solid #30363d;padding-top:18px;margin-top:30px}
+.card{background:#161b22;border:1px solid #30363d;border-radius:10px;padding:16px;margin:0 0 22px}
+.failcard{border-color:#6e4a1f}
+.cid{font-family:ui-monospace,monospace;color:#58a6ff;font-size:13px;margin-bottom:8px}
+.note{background:#3a2a0f;color:#f0c674;padding:8px 12px;border-radius:6px;margin-bottom:12px;font-size:13px}
+.row{display:flex;gap:16px;align-items:flex-start}
+.vidcol{flex:0 0 420px} video{width:420px;border-radius:8px;background:#000}
+.capcol{flex:1;min-width:0} .caphdr{color:#8b949e;font-size:12px;margin-bottom:6px}
+pre.cap{background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:12px;max-height:340px;overflow:auto;white-space:pre-wrap;font:12px/1.5 ui-monospace,monospace;color:#c9d1d9}
+.ts{color:#8b949e} .tag{color:#7ee787} .ocr{color:#f0c674}
+.qas{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.qa{background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px;font-size:13px}
+.q{font-weight:600;margin-bottom:6px} .opt{color:#8b949e;padding:1px 0}
+.opt.gold{color:#7ee787} .ans{margin-top:6px;color:#8b949e;font-size:12px}
+.ok{color:#3fb950;font-weight:600} .no{color:#f85149;font-weight:600}
+b{color:#e6edf3}
+</style></head><body><a href="../index.html" style="position:fixed;top:12px;right:12px;z-index:99999;background:#0f7c73;color:#fff;padding:7px 13px;border-radius:999px;font-family:-apple-system,sans-serif;font-weight:600;font-size:13px;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.18)">&larr; All demos</a><h1 style="margin:6px 0 6px;font-size:1.7rem">Audio-Visual Reasoning</h1><p style="color:#8b949e;max-width:80ch;margin:0 0 4px">The audio describer (ITAD-S) and an off-the-shelf visual grounder (Qwen3-VL-32B) produce one fused audio-visual description; a frozen text reasoner answers from it. Three showcase clips per benchmark.</p><h2 style="margin:34px 0 4px;font-size:1.25rem;color:#e6edf3;border-top:1px solid #21262d;padding-top:22px">Daily-Omni</h2><p style="color:#8b949e;margin:0 0 8px;font-size:13px">ITAD-S-V describe-then-reason &middot; score 80.0</p><div class="card"><div class="cid">sNf0WG57RtA · 30s</div><div class="row"><div class="vidcol"><video controls preload="metadata" src="../assets/av/dailyomni/sNf0WG57RtA_av.mp4"></video></div><div class="capcol"><div class="caphdr">Fused audio-visual caption (Qwen3-VL-32B grounder)</div><pre class="cap">OVERVIEW: Clear, studio-quality recording in a quiet, acoustically treated room with low ambient room tone. One female middle-aged adult speaker with Indian English accent. Single-speaker monologue.
+
+AUDIO-VISUAL TIMELINE (visually grounded; &lt;text&gt;=on-screen text; &lt;speech&gt;=transcript):
+<span class="ts">[0.0s-22.2s]</span> <span class="tag">[background]</span> Low ambient room tone
+<span class="ts">[0.0s-10.0s]</span> <span class="tag">[visual]</span> White paper with red handwritten text: <span class="ocr">&quot;Reducing Agent&quot;</span>, <span class="ocr">&quot;⑦ Sodium triacetoxoborohydride (STAB)&quot;</span>, and chemical formula <span class="ocr">&quot;Na(CH₃COO)₃BH&quot;</span>
+<span class="ts">[0.4s-6.9s]</span> <span class="tag">[speech]</span> Female voice (India accent) describes sodium triacetoxoborohydride as the next reducing agent to study
+   &lt;speech&gt;&quot;The next reducing agent that we have to study is sodium triacetoxo borohydride.&quot;&lt;/speech&gt;
+<span class="ts">[8.3s-16.3s]</span> <span class="tag">[speech]</span> Female voice (India accent) states sodium triacetoxoborohydride is also called sodium triacetoxo hydroborate
+   &lt;speech&gt;&quot;Sodium triacetoxo borohydride is also called sodium triacetoxo hydroborate.&quot;&lt;/speech&gt;
+<span class="ts">[10.0s-20.0s]</span> <span class="tag">[visual]</span> Hand holding black pen enters frame, poised over paper below the chemical formula
+<span class="ts">[17.0s-21.1s]</span> <span class="tag">[speech]</span> Female voice (India accent) says it&#x27;s a reducing agent and a colorless salt
+   &lt;speech&gt;&quot;It&#x27;s a reducing agent. It&#x27;s a colorless salt.&quot;&lt;/speech&gt;
+<span class="ts">[20.0s-30.0s]</span> <span class="tag">[visual]</span> Hand writes <span class="ocr">&quot;colourless salt&quot;</span> in blue ink below the chemical formula
+<span class="ts">[22.2s-30.0s]</span> <span class="tag">[background]</span> Low ambient room tone
+   &lt;speech&gt;&quot;It&#x27;s a colorless salt and it is prepared by&quot;&lt;/speech&gt;
+<span class="ts">[23.3s-26.6s]</span> <span class="tag">[speech]</span> Female voice (India accent) says it&#x27;s a colorless salt and is prepared by
+   &lt;speech&gt;<span class="ocr">&quot;protonolysis of sodium&quot;</span>&lt;/speech&gt;
+<span class="ts">[27.5s-30.0s]</span> <span class="tag">[speech]</span> Female voice (India accent) says <span class="ocr">&quot;protonolysis of sodium&quot;</span> as hand holds pen ready to write</pre></div></div><div class="qas"><div class="qa"><div class="q">[Event Sequence] When does the presenter begin writing &#x27;colourless salt&#x27; relative to the audio&#x27;s discussion of this property? <span class="ok">✓ correct</span></div><div class="opt gold">A. Writing commences exactly as the audio first says &#x27;colourless salt&#x27; ← model</div><div class="opt">B. Audio fully explains its preparation method before writing begins</div><div class="opt">C. Writing starts before the audio mentions &#x27;colourless salt&#x27;</div><div class="opt">D. Audio describes the chemical formula while writing appears</div><div class="ans">gold: <b>Writing commences exactly as the audio first says &#x27;colourless salt&#x27;</b> · model picked: <b>A</b></div></div><div class="qa"><div class="q">[Inference] What is stated about the preparation method of the colorless salt in the presentation? <span class="ok">✓ correct</span></div><div class="opt gold">A. Formed through protonalysis of sodium ← model</div><div class="opt">B. Derived from sodium borohydride under inert conditions</div><div class="opt">C. Produced via acid-base neutralization</div><div class="opt">D. Requires catalytic hydrogenation</div><div class="ans">gold: <b>Formed through protonalysis of sodium</b> · model picked: <b>A</b></div></div><div class="qa"><div class="q">[Context understanding] What specific property of the salt is explained as &#x27;colourless salt&#x27; is written? <span class="ok">✓ correct</span></div><div class="opt gold">A. Preparation method involving protonalysis ← model</div><div class="opt">B. Comparison with sodium borohydride</div><div class="opt">C. Breakdown of acetate groups in the formula</div><div class="opt">D. Role as a catalyst in reactions</div><div class="ans">gold: <b>Preparation method involving protonalysis</b> · model picked: <b>A</b></div></div><div class="qa"><div class="q">[Comparative] How is the abbreviation &#x27;STAB&#x27; explicitly referenced in the audio compared to its visual presentation? <span class="ok">✓ correct</span></div><div class="opt">A. Audio provides alternative nomenclature while visual highlights functional groups</div><div class="opt gold">B. Visual pairs full name with abbreviation while audio uses only systematic names ← model</div><div class="opt">C. Audio uses &#x27;STAB&#x27; repeatedly while visual avoids abbreviation</div><div class="opt">D. Both modalities explain the abbreviation&#x27;s derivation from chemical components</div><div class="ans">gold: <b>Visual pairs full name with abbreviation while audio uses only systematic names</b> · model picked: <b>B</b></div></div><div class="qa"><div class="q">[Reasoning] Why did the presenter emphasize the &#x27;(CH3COO)₃&#x27; portion of the chemical formula while explaining the compound&#x27;s name? <span class="ok">✓ correct</span></div><div class="opt">A. To indicate the three acetoxy groups corresponding to the formula&#x27;s subscript</div><div class="opt">B. To highlight the sodium (Na) component in the formula</div><div class="opt">C. To demonstrate the borohydride (BH) portion&#x27;s role as the reducing agent</div><div class="opt gold">D. To connect the acetoxy groups to the &#x27;triacetoxy&#x27; prefix in the chemical name ← model</div><div class="ans">gold: <b>To connect the acetoxy groups to the &#x27;triacetoxy&#x27; prefix in the chemical name</b> · model picked: <b>D</b></div></div></div></div><div class="card"><div class="cid">6OCyOsSRl1Y · 30s</div><div class="row"><div class="vidcol"><video controls preload="metadata" src="../assets/av/dailyomni/6OCyOsSRl1Y_av.mp4"></video></div><div class="capcol"><div class="caphdr">Fused audio-visual caption (Qwen3-VL-32B grounder)</div><pre class="cap">OVERVIEW: Indoor setting with low ambient room tone; clear recording quality. Two female child speakers, United States accents, English. Alternating turns with no overlap.
+
+AUDIO-VISUAL TIMELINE (visually grounded; &lt;text&gt;=on-screen text; &lt;speech&gt;=transcript):
+<span class="ts">[0.0s-0.4s]</span> <span class="tag">[visual]</span> Black screen with no visual content
+<span class="ts">[0.1s-1.6s]</span> <span class="tag">[speech]</span> A boy in a green Grinch shirt holds a football and speaks to the camera, his mouth open mid-sentence
+   &lt;speech&gt;<span class="ocr">&quot;Hey, can you come on?&quot;</span>&lt;/speech&gt;
+<span class="ts">[0.4s-1.6s]</span> <span class="tag">[visual]</span> A boy in a green Grinch shirt holds a football, speaking with his mouth open
+<span class="ts">[1.6s-4.4s]</span> <span class="tag">[speech]</span> A girl in a pink shirt stretches her arm upward while speaking, her back to the camera
+<span class="ts">[1.6s-4.4s]</span> <span class="tag">[visual]</span> A girl in a pink shirt stretches her arm upward in a grassy park
+   &lt;speech&gt;<span class="ocr">&quot;No, I have to stretch this a little bit more.&quot;</span>&lt;/speech&gt;
+<span class="ts">[4.4s-5.9s]</span> <span class="tag">[speech]</span> A boy in a green Grinch shirt holds a football and speaks, his mouth open
+<span class="ts">[4.4s-5.9s]</span> <span class="tag">[visual]</span> A boy in a green Grinch shirt holds a football, speaking with his mouth open
+   &lt;speech&gt;<span class="ocr">&quot;What are you stretching for?&quot;</span>&lt;/speech&gt;
+<span class="ts">[5.9s-7.6s]</span> <span class="tag">[speech]</span> A girl in a pink shirt stretches her arm across her body while speaking
+<span class="ts">[5.9s-7.6s]</span> <span class="tag">[visual]</span> A girl in a pink shirt stretches her arm across her body in a grassy park
+   &lt;speech&gt;&quot;You&#x27;re about to play basketball, so I have to.&quot;&lt;/speech&gt;
+<span class="ts">[7.6s-9.6s]</span> <span class="tag">[visual]</span> A boy in a green Grinch shirt holds a football, speaking with his mouth open
+<span class="ts">[7.6s-9.6s]</span> <span class="tag">[speech]</span> A boy in a green Grinch shirt holds a football and speaks, his mouth open
+   &lt;speech&gt;<span class="ocr">&quot;This is not basketball, girls do nothing about this.&quot;</span>&lt;/speech&gt;
+<span class="ts">[9.6s-10.6s]</span> <span class="tag">[visual]</span> A girl in a pink shirt speaks, her mouth open, facing the camera
+<span class="ts">[9.6s-10.6s]</span> <span class="tag">[speech]</span> A girl in a pink shirt speaks, her mouth open, facing the camera
+   &lt;speech&gt;<span class="ocr">&quot;But what is it this?&quot;</span>&lt;/speech&gt;
+<span class="ts">[10.6s-13.1s]</span> <span class="tag">[speech]</span> A boy in a green Grinch shirt holds a football and speaks, his mouth open
+<span class="ts">[10.6s-13.2s]</span> <span class="tag">[visual]</span> A boy in a green Grinch shirt holds a football, speaking with his mouth open
+   &lt;speech&gt;&quot;It&#x27;s called football, and we&#x27;re not playing a real game.&quot;&lt;/speech&gt;
+<span class="ts">[11.6s-25.6s]</span> <span class="tag">[background]</span> Low ambient room tone throughout the scene
+<span class="ts">[13.2s-15.5s]</span> <span class="tag">[speech]</span> A girl in a pink shirt stretches her arm across her body while speaking
+<span class="ts">[13.2s-15.5s]</span> <span class="tag">[visual]</span> A girl in a pink shirt stretches her arm across her body in a grassy park
+   &lt;speech&gt;&quot;Okay, well, we&#x27;re still playing the game, aren&#x27;t we?&quot;&lt;/speech&gt;
+<span class="ts">[15.5s-17.8s]</span> <span class="tag">[speech]</span> A boy in a green Grinch shirt holds a football and speaks, his mouth open
+<span class="ts">[15.5s-17.8s]</span> <span class="tag">[visual]</span> A boy in a green Grinch shirt holds a football, speaking with his mouth open
+   &lt;speech&gt;&quot;No, we&#x27;re just throwing the ball back and forth like this.&quot;&lt;/speech&gt;
+<span class="ts">[17.8s-18.2s]</span> <span class="tag">[speech]</span> A girl in a pink shirt speaks, her mouth open, facing the camera
+<span class="ts">[17.8s-18.3s]</span> <span class="tag">[visual]</span> A girl in a pink shirt speaks, her mouth open, facing the camera
+   &lt;speech&gt;<span class="ocr">&quot;No!&quot;</span>&lt;/speech&gt;
+<span class="ts">[18.3s-20.2s]</span> <span class="tag">[visual]</span> A boy in a green Grinch shirt holds a football, speaking with his mouth open
+<span class="ts">[18.3s-20.2s]</span> <span class="tag">[speech]</span> A boy in a green Grinch shirt holds a football and speaks, his mouth open
+   &lt;speech&gt;&quot;See, it&#x27;s not that hard, you don&#x27;t even need to.&quot;&lt;/speech&gt;
+<span class="ts">[20.2s-22.1s]</span> <span class="tag">[speech]</span> A girl in a pink shirt holds a football and speaks, her mouth open
+<span class="ts">[20.2s-22.1s]</span> <span class="tag">[visual]</span> A girl in a pink shirt holds a football, speaking with her mouth open
+   &lt;speech&gt;&quot;Hey, Ron, I wasn&#x27;t ready, you can&#x27;t.&quot;&lt;/speech&gt;
+<span class="ts">[22.1s-25.5s]</span> <span class="tag">[visual]</span> A boy in a green Grinch shirt speaks with his arms outstretched
+<span class="ts">[22.1s-25.5s]</span> <span class="tag">[speech]</span> A boy in a green Grinch shirt speaks with his arms outstretched
+   &lt;speech&gt;&quot;You&#x27;re never gonna be ready, my dad told me that girls take years to get ready.&quot;&lt;/speech&gt;
+<span class="ts">[25.5s-29.5s]</span> <span class="tag">[speech]</span> A girl in a pink shirt holds a football and speaks, her mouth open
+<span class="ts">[25.5s-29.4s]</span> <span class="tag">[visual]</span> A girl in a pink shirt holds a football, speaking with her mouth open
+   &lt;speech&gt;&quot;You need to stop talking about girls, or I&#x27;m gonna tell your mom that you&#x27;re talking about.&quot;&lt;/speech&gt;
+<span class="ts">[29.4s-30.0s]</span> <span class="tag">[visual]</span> A boy in a green Grinch shirt holds a football, speaking with his mouth open</pre></div></div><div class="qas"><div class="qa"><div class="q">[Event Sequence] What happened immediately AFTER the girl said &#x27;I have to stretch just a little bit more&#x27;? <span class="ok">✓ correct</span></div><div class="opt">A. The man explained they were not playing a real game</div><div class="opt gold">B. The man questioned her stretching purpose ← model</div><div class="opt">C. The girl asked if they were still playing</div><div class="opt">D. The girl mentioned playing basketball</div><div class="ans">gold: <b>The man questioned her stretching purpose</b> · model picked: <b>B</b></div></div><div class="qa"><div class="q">[AV Event Alignment] Which visual event coincided with the man pleading, &#x27;come on, can you come on&#x27;? <span class="ok">✓ correct</span></div><div class="opt">A. Man holding football with Santa hat design shirt</div><div class="opt">B. Girl holding football threateningly</div><div class="opt">C. Girl raising arms while wearing pink shirt</div><div class="opt gold">D. Man holding football with Grinch face ← model</div><div class="ans">gold: <b>Man holding football with Grinch face</b> · model picked: <b>D</b></div></div><div class="qa"><div class="q">[Comparative] Which statement correctly identified the game they were playing? <span class="ok">✓ correct</span></div><div class="opt gold">A. &#x27;It&#x27;s called football&#x27; ← model</div><div class="opt">B. &#x27;This is not basketball&#x27;</div><div class="opt">C. &#x27;We&#x27;re just throwing the ball back and forth&#x27;</div><div class="opt">D. &#x27;Girls take years to get ready&#x27;</div><div class="ans">gold: <b>&#x27;It&#x27;s called football&#x27;</b> · model picked: <b>A</b></div></div><div class="qa"><div class="q">[Context understanding] In which type of location does the entire interaction between the characters take place? <span class="ok">✓ correct</span></div><div class="opt">A. Backyard with pine trees</div><div class="opt">B. Indoor basketball court</div><div class="opt gold">C. Grassy park area ← model</div><div class="opt">D. Football field</div><div class="ans">gold: <b>Grassy park area</b> · model picked: <b>C</b></div></div><div class="qa"><div class="q">[Inference] What emotion did the girl primarily convey through her tone and body language when saying &#x27;Tyrone! I wasn&#x27;t ready&#x27;? <span class="ok">✓ correct</span></div><div class="opt">A. Resentful indignation</div><div class="opt gold">B. Annoyed frustration ← model</div><div class="opt">C. Anxious uncertainty</div><div class="opt">D. Playful exasperation</div><div class="ans">gold: <b>Annoyed frustration</b> · model picked: <b>B</b></div></div></div></div><div class="card"><div class="cid">d6b4OmUFt7I · 30s</div><div class="row"><div class="vidcol"><video controls preload="metadata" src="../assets/av/dailyomni/d6b4OmUFt7I_av.mp4"></video></div><div class="capcol"><div class="caphdr">Fused audio-visual caption (Qwen3-VL-32B grounder)</div><pre class="cap">OVERVIEW: Clear recording with low-frequency ambient drone and mellow piano/bass music. One female young adult speaker with United States accent, English language. Single-speaker monologue.
+
+AUDIO-VISUAL TIMELINE (visually grounded; &lt;text&gt;=on-screen text; &lt;speech&gt;=transcript):
+<span class="ts">[0.0s-19.2s]</span> <span class="tag">[background]</span> A low-frequency ambient drone hums beneath the visuals, setting a calm, grounded tone for the training center introduction
+<span class="ts">[0.0s-0.5s]</span> <span class="tag">[visual]</span> Black screen transitions to a close-up of a large white sign with bold text
+<span class="ts">[0.5s-4.9s]</span> <span class="tag">[visual]</span> A sign reading <span class="ocr">&quot;HEAVY EQUIPMENT OPERATOR TRAINING CENTRE&quot;</span> with SICA and Velocity Training Inc. logos, set against a backdrop of trees and mountains
+<span class="ts">[1.8s-4.4s]</span> <span class="tag">[speech]</span> A female voice (off-screen) speaks over the sign, saying &quot;We&#x27;re in West Bank, BC, in the heart of the reserve&quot;
+   &lt;speech&gt;&quot;We&#x27;re in West Bank, BC, in the heart of the reserve.&quot;&lt;/speech&gt;
+<span class="ts">[2.0s-19.2s]</span> <span class="tag">[music]</span> Mellow piano and bass music plays in a slow, swinging groove, accompanying the sign and early site visuals
+<span class="ts">[4.7s-7.8s]</span> <span class="tag">[speech]</span> The same female voice (off-screen) says &quot;And I&#x27;m part of this heavy equipment operator&#x27;s course&quot; over a wide shot of the training site
+   &lt;speech&gt;&quot;And I&#x27;m part of this heavy equipment operator&#x27;s course.&quot;&lt;/speech&gt;
+<span class="ts">[4.9s-9.5s]</span> <span class="tag">[visual]</span> A wide view of the training site with logs in the foreground, a trailer, and heavy equipment in the distance, surrounded by trees and mountains
+<span class="ts">[7.8s-9.1s]</span> <span class="tag">[speech]</span> The female voice (off-screen) says &quot;And yeah, I&#x27;m loving it&quot; as the camera holds on the training site
+   &lt;speech&gt;&quot;And yeah, I&#x27;m loving it.&quot;&lt;/speech&gt;
+<span class="ts">[9.5s-15.2s]</span> <span class="tag">[visual]</span> A woman in an orange safety vest stands in front of the training site, speaking to the camera with trees and machinery behind her
+<span class="ts">[9.6s-11.6s]</span> <span class="tag">[speech]</span> The woman speaks, with on-screen text identifying her as <span class="ocr">&quot;SARA PAYNTON | SICA/VELOCITY CLIENT&quot;</span>
+   &lt;speech&gt;<span class="ocr">&quot;With Eml Anderson for about a year.&quot;</span>&lt;/speech&gt;
+<span class="ts">[12.1s-15.6s]</span> <span class="tag">[speech]</span> The woman continues speaking, saying <span class="ocr">&quot;But my whole life growing up, I was exposed to it a lot&quot;</span> while standing in the same position
+   &lt;speech&gt;<span class="ocr">&quot;But my whole life growing up, I was exposed to it a lot.&quot;</span>&lt;/speech&gt;
+<span class="ts">[15.2s-19.0s]</span> <span class="tag">[visual]</span> A wide shot of the training site showing multiple pieces of heavy equipment, including excavators and a dump truck, with portables and trees
+<span class="ts">[15.8s-18.8s]</span> <span class="tag">[speech]</span> The woman (off-screen) says <span class="ocr">&quot;My dad always showed me all the equipment&quot;</span> over the wide site shot
+   &lt;speech&gt;<span class="ocr">&quot;My dad always showed me all the equipment.&quot;</span>&lt;/speech&gt;
+<span class="ts">[19.0s-20.9s]</span> <span class="tag">[visual]</span> The woman sits at a desk indoors, flipping through a binder labeled <span class="ocr">&quot;PARTICIPANT GUIDE&quot;</span> with papers and folders around her
+<span class="ts">[19.2s-30.0s]</span> <span class="tag">[background]</span> A low ambient room tone plays during the indoor scene, replacing the outdoor drone
+<span class="ts">[19.5s-21.8s]</span> <span class="tag">[speech]</span> The woman (off-screen) says <span class="ocr">&quot;We get our class time, go through all that&quot;</span> while flipping pages in the binder
+   &lt;speech&gt;<span class="ocr">&quot;We get our class time, go through all that,&quot;</span>&lt;/speech&gt;
+<span class="ts">[19.7s-30.0s]</span> <span class="tag">[music]</span> Mellow piano and bass music continues, now under the indoor and outdoor scenes
+<span class="ts">[20.9s-22.9s]</span> <span class="tag">[visual]</span> A close-up of the binder with <span class="ocr">&quot;PARTICIPANT GUIDE&quot;</span> visible, as a hand flips through pages with tabbed sections
+<span class="ts">[21.8s-25.4s]</span> <span class="tag">[speech]</span> The woman (off-screen) says &quot;and then after we get to go on the equipment for a couple hours and get used to it&quot; over the binder shot
+   &lt;speech&gt;&quot;and then after we get to go on the equipment for a couple hours and get used to it.&quot;&lt;/speech&gt;
+<span class="ts">[22.9s-25.9s]</span> <span class="tag">[visual]</span> A yellow CAT excavator digs into a pile of dirt, its arm moving as it scoops and lifts material
+<span class="ts">[25.7s-27.2s]</span> <span class="tag">[speech]</span> The woman (off-screen) says <span class="ocr">&quot;When you leave here at the end of the day&quot;</span> as a yellow dump truck drives through the site
+   &lt;speech&gt;<span class="ocr">&quot;When you leave here at the end of the day,&quot;</span>&lt;/speech&gt;
+<span class="ts">[25.9s-28.8s]</span> <span class="tag">[visual]</span> A yellow dump truck moves through the training site, its bed raised slightly, navigating uneven terrain
+<span class="ts">[27.2s-29.8s]</span> <span class="tag">[speech]</span> The woman (off-screen) says &quot;you know you&#x27;re more familiar with the machines and...&quot; over the dump truck
+   &lt;speech&gt;&quot;you know you&#x27;re more familiar with the machines and...&quot;&lt;/speech&gt;
+<span class="ts">[28.8s-30.0s]</span> <span class="tag">[visual]</span> A yellow bulldozer pushes dirt across a field, kicking up dust as it moves forward</pre></div></div><div class="qas"><div class="qa"><div class="q">[Event Sequence] Which visual-audio pair occurs at the very beginning of the video? <span class="ok">✓ correct</span></div><div class="opt">A. Construction site overview -- training program name reference</div><div class="opt gold">B. Detailed sign graphic -- geographical location mention ← model</div><div class="opt">C. Instructor in PPE -- personal equipment experience anecdote</div><div class="opt">D. Excavator movement -- hands-on training phase description</div><div class="ans">gold: <b>Detailed sign graphic -- geographical location mention</b> · model picked: <b>B</b></div></div><div class="qa"><div class="q">[Reasoning] What immediate task required Sara to review documents in the office before equipment operation? <span class="ok">✓ correct</span></div><div class="opt">A. To analyze soil composition charts</div><div class="opt">B. To finalize her course payment details</div><div class="opt">C. To prepare safety checklists for machinery</div><div class="opt gold">D. To complete classroom requirements stated in the audio ← model</div><div class="ans">gold: <b>To complete classroom requirements stated in the audio</b> · model picked: <b>D</b></div></div><div class="qa"><div class="q">[Comparative] Which visual sequences correspond to the audio mentions of &#x27;go on the equipment&#x27; versus &#x27;familiar with the machines&#x27;? <span class="ok">✓ correct</span></div><div class="opt gold">A. First shows an excavator lifting dirt, second shows a dump truck driving through mud ← model</div><div class="opt">B. First shows binder review in office, second shows tractor parked on site</div><div class="opt">C. First shows safety vest demonstration, second shows mountain landscape</div><div class="opt">D. First shows a bulldozer moving earth, second shows a water tank in background</div><div class="ans">gold: <b>First shows an excavator lifting dirt, second shows a dump truck driving through mud</b> · model picked: <b>A</b></div></div><div class="qa"><div class="q">[Context understanding] What specific visual elements were present when Sara mentioned &#x27;email Anderson&#x27;? <span class="ok">✓ correct</span></div><div class="opt">A. Indoor office with binder and whiteboard</div><div class="opt gold">B. Dirt field with construction equipment and trees ← model</div><div class="opt">C. Excavator actively lifting dirt</div><div class="opt">D. Yellow bulldozer parked in foreground</div><div class="ans">gold: <b>Dirt field with construction equipment and trees</b> · model picked: <b>B</b></div></div></div></div><h2 style="margin:34px 0 4px;font-size:1.25rem;color:#e6edf3;border-top:1px solid #21262d;padding-top:22px">Video-Holmes</h2><p style="color:#8b949e;margin:0 0 8px;font-size:13px">ITAD-S-V describe-then-reason &middot; score 65.1</p><div class="card"><div class="cid">MgBx2Gtbw0M · 7/7 correct</div><div class="row"><div class="vidcol"><video controls preload="metadata" src="../assets/av/videoholmes/MgBx2Gtbw0M.mp4"></video></div><div class="capcol"><div class="caphdr">Full-video fused caption (windowed Qwen3-VL-32B grounder, 9K chars)</div><pre class="cap">OVERVIEW: Low-fidelity recording with persistent background hiss and hum in a small reverberant indoor space. Zero speakers; all audio consists of non-speech sound effects including a cat&#x27;s meow, human sigh, door creak, thump, metallic click, and water running. No interaction.
+
+AUDIO-VISUAL TIMELINE (visually grounded; &lt;text&gt;=on-screen text; &lt;speech&gt;=transcript):
+<span class="ts">[0.0s-4.3s]</span> <span class="tag">[visual]</span> A person lies face-down on a bed with a circular-patterned duvet; a smartphone rests on the bed near the foot
+<span class="ts">[0.1s-30.0s]</span> <span class="tag">[background]</span> Low-level background hiss and hum
+<span class="ts">[0.1s-30.0s]</span> <span class="tag">[sfx]</span> A cat meows (off-screen) with a high-pitched, plaintive tone
+<span class="ts">[4.3s-14.3s]</span> <span class="tag">[visual]</span> A man lies face-down on a bed, then pushes himself up into a sitting position, head bowed
+<span class="ts">[10.0s-10.5s]</span> <span class="tag">[sfx]</span> The man sighs with a low, breathy exhalation as he sits on the bed
+<span class="ts">[13.0s-14.0s]</span> <span class="tag">[sfx]</span> A door creaks open with a high-pitched, metallic groan as the man approaches it
+<span class="ts">[14.0s-16.6s]</span> <span class="tag">[sfx]</span> The door slams shut with a heavy, resonant thud after the man exits
+<span class="ts">[14.3s-21.4s]</span> <span class="tag">[visual]</span> The man walks from the bed toward a door, his back to the camera, then turns slightly
+<span class="ts">[18.0s-18.5s]</span> <span class="tag">[sfx]</span> A sharp metallic click as the man turns his head near the door
+<span class="ts">[21.4s-31.4s]</span> <span class="tag">[visual]</span> The man enters a bathroom, turns on the faucet, and washes his face at the sink
+<span class="ts">[26.4s-30.0s]</span> <span class="tag">[sfx]</span> Water runs from the faucet with a steady, high-pitched flow as the man washes his face
+<span class="ts">[30.0s-60.0s]</span> <span class="tag">[background]</span> Low-frequency hum and faint hiss
+<span class="ts">[30.0s-30.1s]</span> <span class="tag">[sfx]</span> A sharp metallic click, heavy thud, high-pitched squeak, and low groan as the man turns off the faucet
+<span class="ts">[31.4s-37.3s]</span> <span class="tag">[visual]</span> The man dries his face with a towel, then turns and walks out of the bathroom
+<span class="ts">[37.3s-47.3s]</span> <span class="tag">[visual]</span> The man walks back into the bedroom, closes the door, and walks toward the bed
+<span class="ts">[40.3s-41.0s]</span> <span class="tag">[sfx]</span> A car door closes (off-screen) as the man stands near the bed
+<span class="ts">[47.3s-50.1s]</span> <span class="tag">[visual]</span> The man walks toward a dark doorway, his back to the camera
+<span class="ts">[48.4s-50.4s]</span> <span class="tag">[sfx]</span> A car engine revs (off-screen) as the man walks into darkness
+<span class="ts">[50.1s-55.0s]</span> <span class="tag">[visual]</span> A hand pours liquid from a bottle into a glass in a dimly lit space
+<span class="ts">[55.0s-56.9s]</span> <span class="tag">[visual]</span> The man lies face-down on the bed again, his body still
+<span class="ts">[56.8s-60.0s]</span> <span class="tag">[sfx]</span> A car engine idles (off-screen) as the man lies on the bed
+<span class="ts">[56.9s-60.0s]</span> <span class="tag">[visual]</span> The man lies on the bed, then pushes himself up into a sitting position
+<span class="ts">[60.0s-65.7s]</span> <span class="tag">[background]</span> Low-frequency ambient drone as a man sits up in bed, rubbing his face in a dimly lit room with a wooden bed and barred window
+<span class="ts">[60.0s-65.7s]</span> <span class="tag">[music]</span> Mellow piano and bass in a slow, swinging groove accompany the man’s awakening in a shadowy bedroom
+<span class="ts">[60.0s-66.9s]</span> <span class="tag">[visual]</span> Man sits up in bed, rubbing his face, then stands and walks toward a door; wooden bed, door, and barred window visible
+<span class="ts">[65.7s-95.7s]</span> <span class="tag">[background]</span> Background hiss and hum fill the dimly lit bedroom and hallway as the man moves through the space
+<span class="ts">[65.7s-95.7s]</span> <span class="tag">[sfx]</span> High-pitched electronic tone persists as the man walks toward a door, entering a dark hallway
+<span class="ts">[66.9s-72.7s]</span> <span class="tag">[visual]</span> Man walks toward a door, opens it, and enters a dark hallway; door has a metal handle
+<span class="ts">[68.3s-69.1s]</span> <span class="tag">[sfx]</span> Door creaks open and slams shut as the man enters the hallway
+<span class="ts">[72.0s-72.2s]</span> <span class="tag">[sfx]</span> Sharp metallic click as the man turns on a sink faucet
+<span class="ts">[72.7s-73.2s]</span> <span class="tag">[sfx]</span> Heavy thud as the man slams his head against the sink
+<span class="ts">[72.7s-75.0s]</span> <span class="tag">[visual]</span> Man bends over a sink, turns on the faucet, and drinks water in a small, dimly lit bathroom
+<span class="ts">[75.0s-83.3s]</span> <span class="tag">[visual]</span> Man walks back into the bedroom, drinks from a metal bottle, then walks toward a door and enters a dark hallway
+<span class="ts">[80.7s-81.2s]</span> <span class="tag">[sfx]</span> Glass shatters as the man walks past a broken glass object in the hallway
+<span class="ts">[81.5s-83.3s]</span> <span class="tag">[sfx]</span> Metal door closing with a thud as the man shuts the door behind him
+<span class="ts">[83.3s-87.3s]</span> <span class="tag">[visual]</span> Man lies back on the bed, covers his face with his hands, then sits up and rubs his face
+<span class="ts">[84.7s-95.5s]</span> <span class="tag">[music]</span> Low, tense, suspenseful music with sustained strings and a slow, ominous tempo builds as the man lies on the bed
+<span class="ts">[85.7s-86.2s]</span> <span class="tag">[sfx]</span> Low, guttural male grunt as the man groans in pain or frustration
+<span class="ts">[86.7s-87.2s]</span> <span class="tag">[sfx]</span> Low, breathy male sigh as the man exhales heavily
+<span class="ts">[87.3s-94.5s]</span> <span class="tag">[visual]</span> Man sits up in bed, coughs, sneezes, laughs, and sighs repeatedly; appears distressed and disoriented
+<span class="ts">[87.7s-88.2s]</span> <span class="tag">[sfx]</span> Low, breathy male groan as the man reacts to discomfort
+<span class="ts">[88.7s-89.2s]</span> <span class="tag">[sfx]</span> Low, breathy male cough as the man coughs
+<span class="ts">[89.7s-90.2s]</span> <span class="tag">[sfx]</span> Low, breathy male sneeze as the man sneezes
+<span class="ts">[90.7s-91.2s]</span> <span class="tag">[sfx]</span> Low, breathy male laugh as the man laughs nervously
+<span class="ts">[91.7s-92.2s]</span> <span class="tag">[sfx]</span> Low, breathy male sigh as the man releases tension
+<span class="ts">[92.7s-93.2s]</span> <span class="tag">[sfx]</span> Low, breathy male sneeze as the man sneezes
+<span class="ts">[93.7s-94.2s]</span> <span class="tag">[sfx]</span> Low, breathy male cough as the man coughs
+<span class="ts">[94.5s-97.0s]</span> <span class="tag">[visual]</span> Man stands, looks around the room, then walks toward a door; appears confused and anxious
+<span class="ts">[94.7s-95.2s]</span> <span class="tag">[sfx]</span> Low, breathy male sneeze as the man sneezes
+<span class="ts">[95.7s-124.1s]</span> <span class="tag">[sfx]</span> Low-frequency heartbeat pulses steadily as the man moves through the dimly lit space
+<span class="ts">[95.7s-124.1s]</span> <span class="tag">[background]</span> Low-level background hiss and hum accompany the man’s movements
+<span class="ts">[97.0s-98.6s]</span> <span class="tag">[visual]</span> Man walks through a doorway into a dimly lit room; doorway has an arched top
+<span class="ts">[97.2s-97.7s]</span> <span class="tag">[sfx]</span> Sharp metallic clatter as the man knocks over an object
+<span class="ts">[98.6s-100.7s]</span> <span class="tag">[visual]</span> Man walks into a room with a window and a door, then walks toward a desk
+<span class="ts">[100.7s-104.6s]</span> <span class="tag">[visual]</span> Man sits at a desk, types quickly on a laptop; hands move over the keyboard
+<span class="ts">[104.6s-106.8s]</span> <span class="tag">[visual]</span> Laptop screen shows Wikipedia page titled &quot;Time loop&quot; with definition of a time loop in fiction
+<span class="ts">[106.8s-111.8s]</span> <span class="tag">[visual]</span> Man looks at laptop, then picks up a metal bottle and drinks from it; appears shocked or disturbed
+<span class="ts">[111.1s-112.5s]</span> <span class="tag">[sfx]</span> Glass shatter as the man drops a glass bottle
+<span class="ts">[111.8s-112.7s]</span> <span class="tag">[visual]</span> Close-up of shattered glass bottle on the floor; man not visible
+<span class="ts">[112.7s-120.0s]</span> <span class="tag">[visual]</span> Man looks at laptop, then stands and walks toward a door; appears anxious and confused
+<span class="ts">[115.1s-115.4s]</span> <span class="tag">[sfx]</span> Sharp gunshot sound as the man stands in the room
+<span class="ts">[120.0s-120.1s]</span> <span class="tag">[visual]</span> A man in a long-sleeved shirt stands in profile near a door, head bowed, in a dimly lit room
+<span class="ts">[120.1s-122.3s]</span> <span class="tag">[visual]</span> A dark hallway with a woman standing near a doorway, holding a phone to her ear, and a man lying motionless on the floor
+<span class="ts">[122.3s-123.8s]</span> <span class="tag">[visual]</span> A close-up of a man curled on the floor, hands on his head, in a dark room
+<span class="ts">[123.7s-124.2s]</span> <span class="tag">[sfx]</span> A man gasps sharply as he remains curled on the floor, hands on his head
+<span class="ts">[123.8s-124.6s]</span> <span class="tag">[visual]</span> The man remains curled on the floor, hands on his head, in a dark room
+<span class="ts">[124.6s-126.2s]</span> <span class="tag">[visual]</span> A man crawls on a patterned bedspread, viewed from behind, in a dimly lit bedroom
+<span class="ts">[125.7s-153.7s]</span> <span class="tag">[background]</span> A low ambient room tone persists throughout the scene
+<span class="ts">[125.7s-144.5s]</span> <span class="tag">[sfx]</span> A sharp metallic impact with resonant tail occurs as the man crawls on the bed
+<span class="ts">[126.2s-128.4s]</span> <span class="tag">[visual]</span> A man on his hands and knees on a bed, looking down at a phone on the bedspread
+<span class="ts">[127.6s-153.7s]</span> <span class="tag">[sfx]</span> A deep, low-frequency rumble with metallic resonance underlies the scene
+<span class="ts">[128.4s-130.2s]</span> <span class="tag">[visual]</span> A man’s hand reaches for a phone lying on a patterned bedspread
+<span class="ts">[130.2s-131.5s]</span> <span class="tag">[visual]</span> A screen displays a Google search: &quot;how to get out of time loop?&quot; with tabs for ALL, VIDEOS, IMAGES, SHOPPING
+<span class="ts">[131.5s-134.3s]</span> <span class="tag">[visual]</span> A man lies in bed, holding a phone, eyes wide, in a dimly lit room
+<span class="ts">[134.3s-136.2s]</span> <span class="tag">[visual]</span> A screen displays a Google search: &quot;do parallel universes collide?&quot; with tabs for ALL, NEWS, VIDEOS, IMAGES
+<span class="ts">[134.4s-137.3s]</span> <span class="tag">[sfx]</span> A high-pitched, sustained electronic tone with metallic edge plays as the man looks at the phone
+<span class="ts">[136.2s-137.2s]</span> <span class="tag">[visual]</span> A man lies in bed, holding a phone, eyes wide, in a dimly lit room
+<span class="ts">[137.2s-140.3s]</span> <span class="tag">[visual]</span> A wide shot of a bedroom: a man on the floor, a bed with patterned sheets, a window, and another man entering from the left
+<span class="ts">[140.3s-153.7s]</span> <span class="tag">[sfx]</span> A low-frequency, sustained electronic drone with metallic timbre plays throughout
+<span class="ts">[140.3s-143.3s]</span> <span class="tag">[visual]</span> A man on the floor looks up, then stands and walks toward the camera in a dimly lit room
+<span class="ts">[142.7s-143.2s]</span> <span class="tag">[sfx]</span> A sharp metallic impact with high-frequency crack occurs as the man walks
+<span class="ts">[143.1s-153.7s]</span> <span class="tag">[sfx]</span> A high-pitched, brief electronic tone with metallic timbre plays repeatedly
+<span class="ts">[143.3s-144.8s]</span> <span class="tag">[visual]</span> A man walks down a dark hallway, viewed from behind
+<span class="ts">[143.7s-143.9s]</span> <span class="tag">[sfx]</span> A sharp metallic click with brief high-frequency resonance occurs as the man walks
+<span class="ts">[144.8s-146.0s]</span> <span class="tag">[visual]</span> The screen is black, indicating a transition
+<span class="ts">[146.0s-147.4s]</span> <span class="tag">[visual]</span> A dark hallway with a woman on the phone, a man on the floor, and another man entering from the doorway
+<span class="ts">[147.4s-149.0s]</span> <span class="tag">[visual]</span> A close-up of a man curled on the floor, hands on his head, in a dark room
+<span class="ts">[148.7s-149.2s]</span> <span class="tag">[sfx]</span> A sharp metallic impact with high-frequency crack and reverberant tail occurs as the man is curled on the floor
+<span class="ts">[149.0s-149.7s]</span> <span class="tag">[visual]</span> The man remains curled on the floor, hands on his head, in a dark room
+<span class="ts">[149.3s-149.9s]</span> <span class="tag">[sfx]</span> A sharp metallic impact with high-frequency crack and reverberant tail occurs as the man is curled on the floor
+<span class="ts">[149.7s-150.2s]</span> <span class="tag">[sfx]</span> A high-pitched, brief electronic tone with metallic timbre plays as the man is curled on the floor
+<span class="ts">[149.7s-150.9s]</span> <span class="tag">[visual]</span> A man crawls on a patterned bedspread, viewed from behind
+<span class="ts">[150.9s-151.6s]</span> <span class="tag">[visual]</span> The screen is black, indicating a transition
+<span class="ts">[151.6s-154.0s]</span> <span class="tag">[visual]</span> The text &quot;TIME SLIP&quot; appears, then transforms into a logo with interlocking circles on a textured gray background</pre></div></div><div class="qas"><div class="qa"><div class="q"><span class="qt">SR</span> What is the relationship between the man who appears multiple times in the video and the other self who appears at the end? <span class="ok">✓</span></div><div class="opt">A. twin brothers</div><div class="opt">B. The same person on different timelines</div><div class="opt">C. The illusion generated by the false image</div><div class="opt">D. Strangers traveling through time from the future</div><div class="opt gold">E. Another self in a parallel universe ← model</div><div class="opt">F. Schizophrenic personality</div><div class="ans">gold <b>E</b> · model <b>E</b></div></div><div class="qa"><div class="q"><span class="qt">IMC</span> What was the man&#x27;s intention when he turned on the computer to search from 1:27 to 2:02? <span class="ok">✓</span></div><div class="opt">A. Searching for job information</div><div class="opt gold">B. Investigate abnormal phenomena in time ← model</div><div class="opt">C. Confirm whether one is mentally deranged</div><div class="opt">D. Contact others for help.</div><div class="opt">E. kill the boring time</div><div class="opt">F. Crack computer viruses</div><div class="ans">gold <b>B</b> · model <b>B</b></div></div><div class="qa"><div class="q"><span class="qt">TCI</span> What is the direct reason for the cup to fall again after the man put it down? <span class="ok">✓</span></div><div class="opt gold">A. Time-space loop reset ← model</div><div class="opt">B. The corner of the table is not level.</div><div class="opt">C. Blown down by the wind</div><div class="opt">D. Others deliberately pushed down.</div><div class="opt">E. The man&#x27;s hand trembled and made a mistake.</div><div class="opt">F. The earthquake caused shaking.</div><div class="ans">gold <b>A</b> · model <b>A</b></div></div><div class="qa"><div class="q"><span class="qt">TA</span> Which of the following events are arranged in the correct chronological order?
+① The man wakes up for the third time and finds something unusual.
+② The position where the cup falls repeats.
+③ The man gets up and washes his face twice in a row.
+④ He sees another self repeating the behavior.
+⑤ He turns on the computer to search for the reason. <span class="ok">✓</span></div><div class="opt">A. ③→⑤→①→②→④</div><div class="opt">B. ①→③→⑤→④→②</div><div class="opt">C. ⑤→③→②→④→①</div><div class="opt">D. ②→④→③→①→⑤</div><div class="opt gold">E. ③→①→⑤→②→④ ← model</div><div class="opt">F. ④→③→①→⑤→②</div><div class="ans">gold <b>E</b> · model <b>E</b></div></div><div class="qa"><div class="q"><span class="qt">MHR</span> What does the shot of repeating the same behavior twice from 0:00 to 1:26 in the video imply? <span class="ok">✓</span></div><div class="opt gold">A. spatiotemporal dislocation phenomenon ← model</div><div class="opt">B. The man suffers from obsessive-compulsive disorder.</div><div class="opt">C. The loop in dreams</div><div class="opt">D. Director&#x27;s editing mistake</div><div class="opt">E. Memory flashback clips</div><div class="opt">F. Others deliberately imitate.</div><div class="ans">gold <b>A</b> · model <b>A</b></div></div><div class="qa"><div class="q"><span class="qt">PAR</span> What are the most likely rules of the time-space loop in the video? <span class="ok">✓</span></div><div class="opt">A. Reset at a fixed time every day</div><div class="opt gold">B. Parallel universes randomly intertwine ← model</div><div class="opt">C. Reset after triggering a specific action</div><div class="opt">D. Restart after death</div><div class="opt">E. Others manipulate time</div><div class="opt">F. Men&#x27;s subjective consciousness control</div><div class="ans">gold <b>B</b> · model <b>B</b></div></div><div class="qa"><div class="q"><span class="qt">CTI</span> What is the core theme of the video? <span class="ok">✓</span></div><div class="opt gold">A. The chaos of parallel universes ← model</div><div class="opt">B. The agony of mental illness</div><div class="opt">C. The consequences of the abuse of technology</div><div class="opt">D. The impact of memory on life</div><div class="opt">E. The alienation of interpersonal relationships</div><div class="opt">F. The irreversibility of fatalism</div><div class="ans">gold <b>A</b> · model <b>A</b></div></div></div></div><div class="card"><div class="cid">wY2atya9e00 · 7/7 correct</div><div class="row"><div class="vidcol"><video controls preload="metadata" src="../assets/av/videoholmes/wY2atya9e00.mp4"></video></div><div class="capcol"><div class="caphdr">Full-video fused caption (windowed Qwen3-VL-32B grounder, 22K chars)</div><pre class="cap">OVERVIEW: Low-fidelity, muffled recording in a reverberant industrial environment with persistent low-frequency hum, metallic clanks, high-pitched electronic beeps, and mellow piano/bass music. Zero speakers; no spoken interaction.
+
+AUDIO-VISUAL TIMELINE (visually grounded; &lt;text&gt;=on-screen text; &lt;speech&gt;=transcript):
+<span class="ts">[0.0s-30.0s]</span> <span class="tag">[background]</span> A low-frequency hum and metallic clank accompany a man silhouetted behind a glowing red &quot;SMILE DOG&quot; text on a white door
+<span class="ts">[0.0s-27.8s]</span> <span class="tag">[sfx]</span> A high-pitched electronic beep pulses as the &quot;SMILE DOG&quot; text glows red over the man&#x27;s silhouette
+<span class="ts">[0.0s-10.0s]</span> <span class="tag">[visual]</span> A man in a black jacket stands before a white door with the red &quot;SMILE DOG&quot; text, shadows cast on the wall
+<span class="ts">[2.6s-27.8s]</span> <span class="tag">[music]</span> Mellow piano and bass play as the man looks down, his face partially visible in dim light
+<span class="ts">[10.0s-20.0s]</span> <span class="tag">[visual]</span> The man removes his black jacket, revealing a black t-shirt and a tattoo on his left arm, standing in front of a white door
+<span class="ts">[11.0s-11.5s]</span> <span class="tag">[sfx]</span> A sharp metallic clank as the man drops his jacket to the side
+<span class="ts">[20.0s-26.0s]</span> <span class="tag">[visual]</span> The man covers his face with his right hand, revealing a tattoo behind his ear, standing in front of a white door
+<span class="ts">[21.1s-27.8s]</span> <span class="tag">[sfx]</span> A high-pitched electronic tone sounds as the man holds his head in distress
+<span class="ts">[26.0s-37.1s]</span> <span class="tag">[visual]</span> The man holds a white phone to his ear, eyes wide, in a dimly lit room with warm light from a window
+<span class="ts">[30.0s-38.0s]</span> <span class="tag">[background]</span> A low electronic hum and static fill the air as the man speaks on the phone, his face tense
+<span class="ts">[30.0s-38.0s]</span> <span class="tag">[music]</span> Mellow piano and bass continue as the man listens intently on the phone
+<span class="ts">[30.8s-31.1s]</span> <span class="tag">[speech]</span> The man speaks into the phone with a gravelly, serious whisper, his eyes wide
+   &lt;speech&gt;&quot;Hello.&quot;&lt;/speech&gt;
+<span class="ts">[32.0s-32.5s]</span> <span class="tag">[speech]</span> The man responds into the phone with a gravelly, serious whisper, his expression tense
+   &lt;speech&gt;&quot;Hello.&quot;&lt;/speech&gt;
+<span class="ts">[32.6s-33.3s]</span> <span class="tag">[sfx]</span> A sharp, high-pitched electronic beep cuts through as the man holds the phone
+<span class="ts">[35.6s-36.7s]</span> <span class="tag">[speech]</span> The man confesses into the phone with a gravelly, serious whisper, his voice low and loud
+   &lt;speech&gt;&quot;I did a very bad thing.&quot;&lt;/speech&gt;
+<span class="ts">[37.1s-40.4s]</span> <span class="tag">[visual]</span> The man stands in a dark hallway, holding the phone, with a refrigerator visible in the background
+<span class="ts">[38.0s-59.5s]</span> <span class="tag">[background]</span> A low ambient room tone as the man speaks on the phone, his back to the camera
+<span class="ts">[38.0s-59.5s]</span> <span class="tag">[music]</span> Low, ominous music with sustained strings plays as the man listens on the phone
+<span class="ts">[39.1s-39.7s]</span> <span class="tag">[speech]</span> The man asks into the phone with a gravelly, serious whisper, his voice surprised and high-pitched
+   &lt;speech&gt;&quot;What&#x27;s the matter?&quot;&lt;/speech&gt;
+<span class="ts">[40.4s-50.4s]</span> <span class="tag">[visual]</span> The man listens on the phone, eyes wide, in a dimly lit room with warm light from a window
+<span class="ts">[41.3s-42.8s]</span> <span class="tag">[speech]</span> The man confesses into the phone with a gravelly, serious whisper, his voice surprised and loud
+   &lt;speech&gt;&quot;I hit a dog with my car.&quot;&lt;/speech&gt;
+<span class="ts">[45.2s-47.3s]</span> <span class="tag">[speech]</span> The man continues confessing into the phone with a gravelly, serious whisper, his voice neutral and loud
+   &lt;speech&gt;&quot;When I fled the scene, the dog was dying.&quot;&lt;/speech&gt;
+<span class="ts">[48.5s-49.2s]</span> <span class="tag">[speech]</span> The man asks into the phone with a gravelly, serious whisper, his voice surprised and mid-pitched
+   &lt;speech&gt;&quot;What did you do?&quot;&lt;/speech&gt;
+<span class="ts">[50.3s-51.1s]</span> <span class="tag">[speech]</span> The man questions into the phone with a gravelly, serious whisper, his voice surprised and low
+   &lt;speech&gt;&quot;Why did you leave it?&quot;&lt;/speech&gt;
+<span class="ts">[50.4s-55.3s]</span> <span class="tag">[visual]</span> The man listens on the phone, his face tense, in a dimly lit room with warm light from a window
+<span class="ts">[51.6s-52.2s]</span> <span class="tag">[speech]</span> The man explains into the phone with a gravelly, serious whisper, his voice neutral and low
+   &lt;speech&gt;&quot;I was scared.&quot;&lt;/speech&gt;
+<span class="ts">[53.2s-55.2s]</span> <span class="tag">[speech]</span> The man admits into the phone with a gravelly, serious whisper, his voice neutral and mid-pitched
+   &lt;speech&gt;&quot;I just ran away. I lost my mind.&quot;&lt;/speech&gt;
+<span class="ts">[55.3s-56.6s]</span> <span class="tag">[visual]</span> The man turns away from the camera, his back to the viewer, still holding the phone
+<span class="ts">[56.1s-56.8s]</span> <span class="tag">[speech]</span> The man explains into the phone with a gravelly, serious whisper, his voice neutral and loud
+   &lt;speech&gt;&quot;It was raining.&quot;&lt;/speech&gt;
+<span class="ts">[56.6s-60.0s]</span> <span class="tag">[visual]</span> The man listens on the phone, his face tense, in a dimly lit room with warm light from a window
+<span class="ts">[57.7s-58.8s]</span> <span class="tag">[speech]</span> The man admits into the phone with a gravelly, serious whisper, his voice neutral and high-pitched
+   &lt;speech&gt;&quot;I was a little drunk.&quot;&lt;/speech&gt;
+<span class="ts">[59.5s-81.7s]</span> <span class="tag">[background]</span> A low-frequency vehicle rumble as the man holds the phone, his face tense
+<span class="ts">[60.0s-66.6s]</span> <span class="tag">[visual]</span> A man with dark hair and a mustache holds a white phone to his ear, his eyes wide with concern, in a dimly lit room with warm curtains in the background
+   &lt;speech&gt;&quot;At first I thought I hit a person.&quot;&lt;/speech&gt;
+<span class="ts">[60.1s-61.6s]</span> <span class="tag">[speech]</span> A man with dark hair speaks into a white phone, his voice gravelly and calm, as he says &quot;At first I thought I hit a person.&quot;
+<span class="ts">[60.3s-81.7s]</span> <span class="tag">[music]</span> Mellow piano and bass in a slow, swinging groove accompany a man holding a white phone to his ear, his expression tense in a dimly lit room
+   &lt;speech&gt;&quot;Then I realized it was a dog.&quot;&lt;/speech&gt;
+<span class="ts">[63.1s-64.5s]</span> <span class="tag">[speech]</span> A man with dark hair speaks into a white phone, his voice gravelly and calm, as he says &quot;Then I realized it was a dog.&quot;
+   &lt;speech&gt;&quot;Thank God it wasn&#x27;t a person.&quot;&lt;/speech&gt;
+<span class="ts">[65.8s-67.2s]</span> <span class="tag">[speech]</span> A man with dark hair speaks into a white phone, his voice gravelly and calm, as he says &quot;Thank God it wasn&#x27;t a person.&quot;
+<span class="ts">[66.6s-73.7s]</span> <span class="tag">[visual]</span> A man with dark hair holds a white phone to his ear, his eyes wide in surprise, in a dimly lit room with warm curtains in the background
+   &lt;speech&gt;&quot;Hey Jack, are you kidding me?&quot;&lt;/speech&gt;
+<span class="ts">[67.6s-69.1s]</span> <span class="tag">[speech]</span> A man with dark hair speaks into a white phone, his voice gravelly and urgent, as he says &quot;Hey Jack, are you kidding me?&quot;
+   &lt;speech&gt;&quot;What difference does it make?&quot;&lt;/speech&gt;
+<span class="ts">[69.4s-70.5s]</span> <span class="tag">[speech]</span> A man with dark hair speaks into a white phone, his voice gravelly and urgent, as he says &quot;What difference does it make?&quot;
+   &lt;speech&gt;&quot;It&#x27;s a living thing.&quot;&lt;/speech&gt;
+<span class="ts">[70.8s-71.7s]</span> <span class="tag">[speech]</span> A man with dark hair speaks into a white phone, his voice gravelly and urgent, as he says &quot;It&#x27;s a living thing.&quot;
+   &lt;speech&gt;&quot;Yes, he is, but...&quot;&lt;/speech&gt;
+<span class="ts">[72.1s-73.0s]</span> <span class="tag">[speech]</span> A man with dark hair speaks into a white phone, his voice gravelly and calm, as he says &quot;Yes, he is, but...&quot;
+<span class="ts">[73.7s-83.7s]</span> <span class="tag">[visual]</span> A man in profile holds a white phone to his ear, a tattoo visible on his neck, in a dimly lit room with warm curtains in the background
+   &lt;speech&gt;&quot;That dog was already dead.&quot;&lt;/speech&gt;
+<span class="ts">[74.4s-75.7s]</span> <span class="tag">[speech]</span> A man in profile speaks into a white phone, his voice gravelly and calm, as he says &quot;That dog was already dead.&quot;
+   &lt;speech&gt;&quot;You said it was dying.&quot;&lt;/speech&gt;
+<span class="ts">[76.6s-77.7s]</span> <span class="tag">[speech]</span> A man in profile speaks into a white phone, his voice gravelly and urgent, as he says &quot;You said it was dying.&quot;
+   &lt;speech&gt;&quot;Yes, he was, but his neck was broken.&quot;&lt;/speech&gt;
+<span class="ts">[79.1s-81.1s]</span> <span class="tag">[speech]</span> A man in profile speaks into a white phone, his voice gravelly and calm, as he says &quot;Yes, he was, but his neck was broken.&quot;
+<span class="ts">[81.7s-101.9s]</span> <span class="tag">[background]</span> A low ominous drone with metallic resonance plays as a man in profile holds a white phone to his ear, his expression tense
+<span class="ts">[82.2s-83.8s]</span> <span class="tag">[speech]</span> A man in profile speaks into a white phone, his voice gravelly and serious, whispering &quot;There was no way he could live.&quot;
+   &lt;speech&gt;&quot;There was no way he could live.&quot;&lt;/speech&gt;
+<span class="ts">[83.7s-87.9s]</span> <span class="tag">[visual]</span> A man in profile holds a white phone to his ear, his face tense, in a dimly lit room with warm curtains in the background
+<span class="ts">[83.8s-97.7s]</span> <span class="tag">[music]</span> Mellow piano and bass in a slow, swinging groove accompany a man in profile holding a white phone to his ear, his expression tense
+<span class="ts">[85.2s-86.0s]</span> <span class="tag">[speech]</span> A man in profile speaks into a white phone, his voice gravelly and serious, whispering &quot;You don&#x27;t know that.&quot;
+   &lt;speech&gt;&quot;You don&#x27;t know that.&quot;&lt;/speech&gt;
+<span class="ts">[86.7s-87.6s]</span> <span class="tag">[speech]</span> A man in profile speaks into a white phone, his voice gravelly and serious, whispering angrily &quot;Because you didn&#x27;t try.&quot;
+   &lt;speech&gt;&quot;Because you didn&#x27;t try.&quot;&lt;/speech&gt;
+<span class="ts">[87.9s-91.5s]</span> <span class="tag">[visual]</span> A man stands in a doorway, holding a white phone to his ear, a refrigerator with magnets visible behind him in a dimly lit room
+<span class="ts">[88.5s-89.8s]</span> <span class="tag">[speech]</span> A man in a doorway speaks into a white phone, his voice gravelly and serious, whispering &quot;I don&#x27;t want to scare you.&quot;
+   &lt;speech&gt;&quot;I don&#x27;t want to scare you.&quot;&lt;/speech&gt;
+<span class="ts">[90.4s-91.7s]</span> <span class="tag">[speech]</span> A man in a doorway speaks into a white phone, his voice gravelly and serious, whispering &quot;But you&#x27;re in a lot of trouble.&quot;
+   &lt;speech&gt;&quot;But you&#x27;re in a lot of trouble.&quot;&lt;/speech&gt;
+<span class="ts">[91.5s-97.5s]</span> <span class="tag">[visual]</span> A man in profile holds a white phone to his ear, his face tense, in a dimly lit room with warm curtains in the background
+<span class="ts">[93.9s-94.2s]</span> <span class="tag">[speech]</span> A man in profile speaks into a white phone, his voice gravelly and serious, whispering &quot;No.&quot;
+   &lt;speech&gt;&quot;No.&quot;&lt;/speech&gt;
+<span class="ts">[95.0s-95.8s]</span> <span class="tag">[speech]</span> A man in profile speaks into a white phone, his voice gravelly and serious, whispering &quot;Nobody saw it.&quot;
+   &lt;speech&gt;&quot;Nobody saw it.&quot;&lt;/speech&gt;
+<span class="ts">[96.4s-97.1s]</span> <span class="tag">[speech]</span> A man in profile speaks into a white phone, his voice gravelly and serious, whispering &quot;It&#x27;s all right.&quot;
+   &lt;speech&gt;&quot;It&#x27;s all right.&quot;&lt;/speech&gt;
+<span class="ts">[97.5s-101.0s]</span> <span class="tag">[visual]</span> A man stands in a doorway, holding a white phone to his ear, a refrigerator with magnets visible behind him in a dimly lit room
+<span class="ts">[97.8s-99.3s]</span> <span class="tag">[speech]</span> A man in a doorway speaks into a white phone, his voice gravelly and serious, whispering &quot;I&#x27;m not talking about the police.&quot;
+   &lt;speech&gt;&quot;I&#x27;m not talking about the police.&quot;&lt;/speech&gt;
+<span class="ts">[99.6s-101.1s]</span> <span class="tag">[speech]</span> A man in a doorway speaks into a white phone, his voice gravelly and serious, whispering &quot;I&#x27;m talking about Smile Dog.&quot;
+   &lt;speech&gt;&quot;I&#x27;m talking about Smile Dog.&quot;&lt;/speech&gt;
+<span class="ts">[101.0s-111.0s]</span> <span class="tag">[visual]</span> A man in profile holds a white phone to his ear, his face tense, in a dimly lit room with warm curtains in the background
+<span class="ts">[101.9s-124.1s]</span> <span class="tag">[background]</span> A low ominous drone with metallic resonance plays as a man in profile holds a white phone to his ear, his expression tense
+   &lt;speech&gt;&quot;What is it?&quot;&lt;/speech&gt;
+<span class="ts">[102.7s-103.3s]</span> <span class="tag">[speech]</span> A man in profile speaks into a white phone, his voice gravelly and serious, whispering with surprise &quot;What is it?&quot;
+   &lt;speech&gt;&quot;I don&#x27;t think you know.&quot;&lt;/speech&gt;
+<span class="ts">[104.3s-105.3s]</span> <span class="tag">[speech]</span> A man in profile speaks into a white phone, his voice gravelly and urgent, as he says &quot;I don&#x27;t think you know.&quot;
+   &lt;speech&gt;&quot;There&#x27;s a legend about avenging dogs that get killed.&quot;&lt;/speech&gt;
+<span class="ts">[106.4s-109.2s]</span> <span class="tag">[speech]</span> A man in profile speaks into a white phone, his voice gravelly and urgent, as he says &quot;There&#x27;s a legend about avenging dogs that get killed.&quot;
+   &lt;speech&gt;&quot;What the fuck are you talking about?&quot;&lt;/speech&gt;
+<span class="ts">[110.8s-112.5s]</span> <span class="tag">[speech]</span> A man in profile speaks into a white phone, his voice gravelly and serious, whispering with surprise &quot;What the fuck are you talking about?&quot;
+<span class="ts">[111.0s-113.4s]</span> <span class="tag">[visual]</span> A man in profile holds a white phone to his ear, his face tense, in a dimly lit room with warm curtains in the background
+   &lt;speech&gt;&quot;It&#x27;s called smile dog.&quot;&lt;/speech&gt;
+<span class="ts">[113.1s-114.5s]</span> <span class="tag">[speech]</span> A man in profile speaks into a white phone, his voice gravelly and urgent, as he says &quot;It&#x27;s called smile dog.&quot;
+<span class="ts">[113.4s-120.0s]</span> <span class="tag">[visual]</span> A man stands in a doorway, holding a white phone to his ear, a refrigerator with magnets visible behind him in a dimly lit room
+   &lt;speech&gt;&quot;They claim that anyone who sees his image once goes mad and commits suicide.&quot;&lt;/speech&gt;
+<span class="ts">[115.7s-121.2s]</span> <span class="tag">[speech]</span> A man in a doorway speaks into a white phone, his voice gravelly and urgent, as he says &quot;They claim that anyone who sees his image once goes mad and commits suicide.&quot;
+<span class="ts">[120.0s-121.6s]</span> <span class="tag">[visual]</span> A man in a dark shirt stands in a doorway, holding a white phone to his ear, dimly lit room with a refrigerator covered in magnets in the background
+<span class="ts">[121.6s-122.5s]</span> <span class="tag">[music]</span> Mellow piano and bass in a slow, swinging groove accompany a man in a dark shirt holding a white phone to his ear in a dimly lit room
+<span class="ts">[121.6s-126.9s]</span> <span class="tag">[visual]</span> A man in a dark shirt holds a white phone to his ear, his face tense in close-up, dimly lit room with vertical blinds in the background
+   &lt;speech&gt;&quot;That&#x27;s ridiculous.&quot;&lt;/speech&gt;
+<span class="ts">[122.5s-123.5s]</span> <span class="tag">[speech]</span> A man with dark hair and a mustache speaks into a white phone, his voice gravelly and serious, whispering &quot;That&#x27;s ridiculous.&quot;
+<span class="ts">[124.0s-145.3s]</span> <span class="tag">[background]</span> A low ominous drone with metallic resonance underlies a man’s tense phone conversation in a dimly lit room
+<span class="ts">[124.5s-126.0s]</span> <span class="tag">[speech]</span> A man with dark hair and a mustache speaks into a white phone, his voice gravelly and serious, whispering &quot;You don&#x27;t really believe that, do you?&quot;
+   &lt;speech&gt;&quot;You don&#x27;t really believe that, do you?&quot;&lt;/speech&gt;
+<span class="ts">[126.8s-129.5s]</span> <span class="tag">[speech]</span> A man with dark hair and a mustache speaks into a white phone, his voice gravelly and urgent, saying &quot;Look, there&#x27;s a lot of footage of this on the internet.&quot;
+   &lt;speech&gt;&quot;Look, there&#x27;s a lot of footage of this on the internet.&quot;&lt;/speech&gt;
+<span class="ts">[126.9s-134.5s]</span> <span class="tag">[visual]</span> A man in a dark shirt stands in a doorway, holding a white phone to his ear, dimly lit room with a refrigerator covered in magnets in the background
+<span class="ts">[130.6s-131.4s]</span> <span class="tag">[speech]</span> A man with dark hair and a mustache speaks into a white phone, his voice gravelly and urgent, saying &quot;If it&#x27;s true,&quot;
+   &lt;speech&gt;&quot;If it&#x27;s true,&quot;&lt;/speech&gt;
+<span class="ts">[132.3s-133.9s]</span> <span class="tag">[speech]</span> A man with dark hair and a mustache speaks into a white phone, his voice gravelly and angry, saying &quot;I wouldn&#x27;t wanna be you, man.&quot;
+   &lt;speech&gt;&quot;I wouldn&#x27;t wanna be you, man.&quot;&lt;/speech&gt;
+<span class="ts">[134.5s-144.5s]</span> <span class="tag">[visual]</span> A man with dark hair and a mustache holds a white phone to his ear, his eyes wide and face tense in close-up, dimly lit room with vertical blinds in the background
+<span class="ts">[134.6s-145.3s]</span> <span class="tag">[music]</span> Mellow piano and bass in a slow, swinging groove accompany a man’s tense phone conversation in a dimly lit room
+<span class="ts">[135.2s-136.3s]</span> <span class="tag">[speech]</span> A man with dark hair and a mustache speaks into a white phone, his voice gravelly and fearful, whispering &quot;Look, you&#x27;re scaring me.&quot;
+   &lt;speech&gt;&quot;Look, you&#x27;re scaring me.&quot;&lt;/speech&gt;
+<span class="ts">[138.0s-139.4s]</span> <span class="tag">[speech]</span> A man with dark hair and a mustache speaks into a white phone, his voice gravelly and resigned, whispering &quot;It&#x27;s just a stray dog.&quot;
+   &lt;speech&gt;&quot;It&#x27;s just a stray dog.&quot;&lt;/speech&gt;
+<span class="ts">[140.0s-142.6s]</span> <span class="tag">[speech]</span> A man with dark hair and a mustache speaks into a white phone, his voice gravelly and angry, whispering &quot;A fucking stray that nobody gives a shit about.&quot;
+   &lt;speech&gt;&quot;A fucking stray that nobody gives a shit about.&quot;&lt;/speech&gt;
+<span class="ts">[144.4s-144.9s]</span> <span class="tag">[speech]</span> A man with dark hair and a mustache speaks into a white phone, his voice gravelly and urgent, saying &quot;Okay.&quot;
+   &lt;speech&gt;&quot;Okay.&quot;&lt;/speech&gt;
+<span class="ts">[144.5s-154.5s]</span> <span class="tag">[visual]</span> A man with dark hair and a mustache holds a white phone to his ear, his eyes downcast and face distressed in close-up, dimly lit room with vertical blinds in the background
+   &lt;speech&gt;&quot;If you say so.&quot;&lt;/speech&gt;
+<span class="ts">[145.5s-175.4s]</span> <span class="tag">[background]</span> A low-frequency hum and metallic clank underlie a man’s distressed state in a dimly lit room
+<span class="ts">[145.5s-146.4s]</span> <span class="tag">[speech]</span> A man with dark hair and a mustache speaks into a white phone, his voice gravelly and weary, whispering &quot;If you say so.&quot;
+   &lt;speech&gt;&quot;I&#x27;ll see you later.&quot;&lt;/speech&gt;
+<span class="ts">[148.3s-149.4s]</span> <span class="tag">[speech]</span> A man with dark hair and a mustache speaks into a white phone, his voice gravelly and soft, saying &quot;I&#x27;ll see you later.&quot;
+<span class="ts">[150.4s-152.8s]</span> <span class="tag">[sfx]</span> A high-pitched metallic whirring sound emanates from the environment as a man with dark hair and a mustache holds a white phone to his ear
+<span class="ts">[154.5s-159.5s]</span> <span class="tag">[visual]</span> A man with dark hair and a mustache turns his head away, looking down, his neck tattoo visible, in a dimly lit room
+<span class="ts">[155.4s-155.9s]</span> <span class="tag">[sfx]</span> A sharp metallic clank occurs in the environment as a man with dark hair and a mustache turns his head away
+<span class="ts">[156.3s-157.4s]</span> <span class="tag">[sfx]</span> A male sigh is heard as a man with dark hair and a mustache bows his head in a dimly lit room
+<span class="ts">[159.5s-169.5s]</span> <span class="tag">[visual]</span> A man with dark hair and a mustache sits in a dimly lit room, hand to his face, looking distressed
+<span class="ts">[169.5s-175.2s]</span> <span class="tag">[visual]</span> A man with dark hair and a mustache sits in a dimly lit room, head bowed, looking down
+<span class="ts">[171.3s-175.4s]</span> <span class="tag">[sfx]</span> Water runs from a faucet as a man with dark hair and a mustache sits in a dimly lit room, head bowed
+<span class="ts">[175.2s-178.7s]</span> <span class="tag">[visual]</span> A dark hallway with a lighted door at the end, vertical blinds visible on the left
+<span class="ts">[175.4s-182.1s]</span> <span class="tag">[background]</span> A low ambient room tone fills a dark hallway with a lighted door at the end
+<span class="ts">[175.4s-182.1s]</span> <span class="tag">[sfx]</span> Water flows steadily from a faucet into a sink in a dark hallway
+<span class="ts">[178.7s-180.0s]</span> <span class="tag">[visual]</span> A man with dark hair and a mustache sits in a dimly lit room, looking forward with a tense expression
+<span class="ts">[180.0s-184.2s]</span> <span class="tag">[visual]</span> A man in a black t-shirt sits in a dimly lit room, his face tense and eyes wide, then stands and walks toward a dark doorway
+<span class="ts">[182.0s-202.6s]</span> <span class="tag">[background]</span> A low-frequency mechanical hum and metallic clanking accompany the man walking through a dark hallway
+<span class="ts">[182.0s-202.6s]</span> <span class="tag">[sfx]</span> A high-pitched metallic chime with a bell-like quality echoes as the man moves through the dim space
+<span class="ts">[182.1s-211.8s]</span> <span class="tag">[music]</span> Mellow piano and synth music plays as the man walks toward a warmly lit doorway
+<span class="ts">[184.2s-187.2s]</span> <span class="tag">[visual]</span> The man’s back is visible as he walks toward a dark doorway, his silhouette against the dim light
+<span class="ts">[187.2s-188.9s]</span> <span class="tag">[visual]</span> The man turns to face the camera, standing in a doorway with a dimly lit room behind him
+<span class="ts">[188.9s-194.8s]</span> <span class="tag">[visual]</span> A close-up of the man’s face shows intense, wide eyes and a furrowed brow, his expression tense
+<span class="ts">[194.8s-196.4s]</span> <span class="tag">[visual]</span> A bathroom sink with running water and toothbrushes in a holder against a stone wall
+<span class="ts">[196.4s-198.9s]</span> <span class="tag">[visual]</span> The man looks down at the sink, his face tense, standing in a dimly lit bathroom
+<span class="ts">[198.9s-201.0s]</span> <span class="tag">[visual]</span> The man stands in a doorway, backlit by warm light, his head bowed and shoulders slumped
+<span class="ts">[201.0s-202.5s]</span> <span class="tag">[visual]</span> A hand reaches to turn off the faucet, stopping the flow of water into the sink
+<span class="ts">[202.5s-209.8s]</span> <span class="tag">[visual]</span> A close-up of the man’s face shows him looking up with wide, fearful eyes, his expression strained
+<span class="ts">[203.5s-205.2s]</span> <span class="tag">[sfx]</span> A sharp metallic impact jolts the man, his eyes widening in sudden shock
+<span class="ts">[205.8s-211.8s]</span> <span class="tag">[sfx]</span> A high-pitched electronic tone plays as the man scans the room with a fearful gaze
+<span class="ts">[209.8s-214.2s]</span> <span class="tag">[visual]</span> The man stands beside a drawing of a grotesque, smiling face on a tiled wall
+<span class="ts">[212.0s-218.6s]</span> <span class="tag">[background]</span> A background hiss and hum accompany the drawing on the wall
+<span class="ts">[212.0s-218.6s]</span> <span class="tag">[music]</span> A synthesized chiptune melody plays as the drawing is revealed
+<span class="ts">[214.2s-216.6s]</span> <span class="tag">[visual]</span> A close-up of the drawing shows a distorted, smiling face with dark, hollow eyes
+<span class="ts">[216.6s-221.4s]</span> <span class="tag">[visual]</span> The drawing’s eyes begin to glow with a bright white light, intensifying as the man watches
+<span class="ts">[217.6s-218.6s]</span> <span class="tag">[speech]</span> A gravelly male voice whispers, &quot;There&#x27;s a legend about a&quot; as the drawing’s eyes glow
+   &lt;speech&gt;&quot;There&#x27;s a legend about a&quot;&lt;/speech&gt;
+<span class="ts">[218.6s-248.2s]</span> <span class="tag">[background]</span> A low ambient room tone continues as the man stares at the drawing
+<span class="ts">[218.6s-220.2s]</span> <span class="tag">[speech]</span> The voice continues, &quot;Vengeing dogs that get killed,&quot; as the drawing’s eyes glow brighter
+   &lt;speech&gt;&quot;Vengeing dogs that get killed.&quot;&lt;/speech&gt;
+<span class="ts">[218.8s-248.2s]</span> <span class="tag">[music]</span> A cinematic orchestral score with strings and piano builds as the eyes glow
+<span class="ts">[220.3s-222.7s]</span> <span class="tag">[sfx]</span> A high-pitched metallic screech sounds as the drawing’s eyes transform into spirals
+<span class="ts">[221.4s-226.2s]</span> <span class="tag">[visual]</span> The drawing’s eyes become hypnotic spirals, glowing intensely in the dim light
+<span class="ts">[222.9s-224.2s]</span> <span class="tag">[speech]</span> The voice whispers, &quot;It&#x27;s called Smile Dog,&quot; as the spirals form
+   &lt;speech&gt;&quot;It&#x27;s called Smile Dog.&quot;&lt;/speech&gt;
+<span class="ts">[226.2s-228.7s]</span> <span class="tag">[visual]</span> The man’s eyes now show the same hypnotic spirals, his face frozen in terror
+<span class="ts">[226.8s-232.2s]</span> <span class="tag">[speech]</span> The voice warns, &quot;They claim that anyone who sees his image once goes mad and commits suicide,&quot; as the man’s eyes spiral
+   &lt;speech&gt;&quot;They claim that anyone who sees his image once goes mad and commits suicide.&quot;&lt;/speech&gt;
+<span class="ts">[228.7s-231.0s]</span> <span class="tag">[visual]</span> The man’s eyes become blank white circles, his face expressionless and still
+<span class="ts">[231.0s-235.9s]</span> <span class="tag">[visual]</span> A close-up of the man’s face shows his blank white eyes, unblinking and fixed
+<span class="ts">[235.9s-238.5s]</span> <span class="tag">[visual]</span> The man’s face remains motionless, eyes blank, as the drawing’s eyes glow again
+<span class="ts">[238.5s-239.7s]</span> <span class="tag">[visual]</span> The drawing’s eyes return to spirals, glowing with an eerie light
+<span class="ts">[239.7s-240.0s]</span> <span class="tag">[visual]</span> The man raises his hand to his head, his blank eyes fixed forward
+<span class="ts">[240.0s-246.1s]</span> <span class="tag">[visual]</span> A man with glowing white eyes stares at the camera, hand on his head, other hand on his chin, wearing a black shirt with a tattoo on his arm, in a dimly lit room with beige walls
+<span class="ts">[244.4s-245.5s]</span> <span class="tag">[speech]</span> The man with glowing eyes whispers, &quot;But his neck was broken,&quot; while maintaining his pose, hand on head and chin
+   &lt;speech&gt;&quot;But his neck was broken.&quot;&lt;/speech&gt;
+<span class="ts">[246.1s-248.5s]</span> <span class="tag">[visual]</span> The camera tilts sharply as the man’s head tilts back, eyes closed, in a dimly lit bathroom with a towel-draped chair visible
+<span class="ts">[246.1s-246.6s]</span> <span class="tag">[sfx]</span> The man’s head strikes a surface with a sharp metallic impact as he tilts back
+<span class="ts">[248.3s-261.0s]</span> <span class="tag">[background]</span> A continuous hiss and hum underlies the scene as the man lies motionless on the floor
+<span class="ts">[248.3s-261.0s]</span> <span class="tag">[music]</span> A mellow, slow-tempo piano and string film score with a somber, melancholic mood plays over the scene
+<span class="ts">[248.5s-255.9s]</span> <span class="tag">[visual]</span> The man lies motionless on the floor in a dark hallway, partially in shadow, with a bathroom visible behind him, containing a toilet and a wicker basket
+   &lt;speech&gt;&quot;When I fled the scene, the dog was dying.&quot;&lt;/speech&gt;
+<span class="ts">[250.1s-252.1s]</span> <span class="tag">[speech]</span> The man, lying motionless on the floor, whispers, &quot;When I fled the scene, the dog was dying,&quot; in a gravelly, low-pitched voice
+<span class="ts">[255.9s-260.7s]</span> <span class="tag">[visual]</span> The camera is above the man, showing his face contorted in a scream, mouth wide open, eyes closed, in a dimly lit space with a concrete floor
+<span class="ts">[260.7s-261.0s]</span> <span class="tag">[visual]</span> The man’s face remains in a scream, mouth wide open, eyes closed, camera angle unchanged, in a dimly lit space with a concrete floor</pre></div></div><div class="qas"><div class="qa"><div class="q"><span class="qt">SR</span> What is the relationship between the man in black and the boy he is talking to on the phone? <span class="ok">✓</span></div><div class="opt">A. colleague</div><div class="opt">B. brother</div><div class="opt gold">C. friend ← model</div><div class="opt">D. stranger</div><div class="opt">E. neighbor</div><div class="opt">F. enemy</div><div class="ans">gold <b>C</b> · model <b>C</b></div></div><div class="qa"><div class="q"><span class="qt">IMC</span> What is the most likely intention of the man in black covering his face in frustration at the beginning of the video from 0:00 to 0:25? <span class="ok">✓</span></div><div class="opt">A. Conceal criminal evidence</div><div class="opt gold">B. Relieve inner guilt ← model</div><div class="opt">C. Express physical pain</div><div class="opt">D. Cover up fear.</div><div class="opt">E. Regret not locking the door.</div><div class="opt">F. Irritable due to hunger</div><div class="ans">gold <b>B</b> · model <b>B</b></div></div><div class="qa"><div class="q"><span class="qt">TCI</span> What was the fundamental cause of the man in black&#x27;s eventual death? <span class="ok">✓</span></div><div class="opt">A. sudden heart attack</div><div class="opt">B. Be murdered by a friend</div><div class="opt">C. sequelae of traffic accident</div><div class="opt">D. Suicide to escape reality</div><div class="opt">E. Accidentally touching a leaky faucet</div><div class="opt gold">F. Smiling dog controls its suicide
+
+需要说明的是，“微笑狗”一般指柴犬“doge”，而所谓“控制其自杀”这种表述在现实中是违背常理且不存在合理逻辑的情况，此内容可能是一种恶搞、玩笑性质或者不恰当的创意表达。 ← model</div><div class="ans">gold <b>F</b> · model <b>F</b></div></div><div class="qa"><div class="q"><span class="qt">TA</span> Arrange the following events in chronological order:
+①The man in black checks the mirror in the toilet.
+②The tap automatically turns on.
+③The man in black talks to his friend.
+④The man in black covers his face in frustration.
+⑤The image of a smiling dog appears. <span class="ok">✓</span></div><div class="opt">A. ④②③①⑤</div><div class="opt">B. ③④②⑤①</div><div class="opt">C. ②④③⑤①</div><div class="opt">D. ④③①②⑤</div><div class="opt">E. ③②④①⑤</div><div class="opt gold">F. ④③②①⑤ ← model</div><div class="ans">gold <b>F</b> · model <b>F</b></div></div><div class="qa"><div class="q"><span class="qt">MHR</span> What does the scene of the faucet automatically dispensing water at 3:15 in the video imply? <span class="ok">✓</span></div><div class="opt">A. Aging of water pipes in houses</div><div class="opt">B. The man in black forgot to turn off the water.</div><div class="opt gold">C. Smiling dog has arrived at the scene. ← model</div><div class="opt">D. Friends remotely control pranks</div><div class="opt">E. Foretell an impending power outage</div><div class="opt">F. The man in black has hallucinations.</div><div class="ans">gold <b>C</b> · model <b>C</b></div></div><div class="qa"><div class="q"><span class="qt">PAR</span> What are the supernatural abilities rules of the smiling dog? <span class="ok">✓</span></div><div class="opt">A. Possessed humans seeking revenge on society</div><div class="opt">B. Manufacture auditory hallucinations to interfere with judgment</div><div class="opt">C. Manipulate water flow to create accidents</div><div class="opt">D. Transform into human form</div><div class="opt gold">E. Control human suicide through images ← model</div><div class="opt">F. Erase human memory</div><div class="ans">gold <b>E</b> · model <b>E</b></div></div><div class="qa"><div class="q"><span class="qt">CTI</span> What is the most likely core theme of this film? <span class="ok">✓</span></div><div class="opt">A. The abuse of technology backfires on humanity.</div><div class="opt">B. Friendship overcomes fear.</div><div class="opt">C. The importance of animal protection.</div><div class="opt gold">D. The inevitability of karma ← model</div><div class="opt">E. Mental illness hazards</div><div class="opt">F. Urban legends are not credible.</div><div class="ans">gold <b>D</b> · model <b>D</b></div></div></div></div><div class="card"><div class="cid">zhLcuTE1Qno · 7/7 correct</div><div class="row"><div class="vidcol"><video controls preload="metadata" src="../assets/av/videoholmes/zhLcuTE1Qno.mp4"></video></div><div class="capcol"><div class="caphdr">Full-video fused caption (windowed Qwen3-VL-32B grounder, 8K chars)</div><pre class="cap">OVERVIEW: High-fidelity cinematic recording in a reverberant industrial or urban environment with low-frequency ambient drone, tense orchestral score, mechanical typing, metallic clanks, and high-pitched electronic whine. Zero speakers; no spoken interaction.
+
+AUDIO-VISUAL TIMELINE (visually grounded; &lt;text&gt;=on-screen text; &lt;speech&gt;=transcript):
+<span class="ts">[0.0s-20.8s]</span> <span class="tag">[background]</span> Low-frequency ambient drone as the word &quot;GLOVES&quot; in yellow text appears over a forest canopy with tall trees and a cloudy sky
+<span class="ts">[0.0s-1.9s]</span> <span class="tag">[visual]</span> The word &quot;GLOVES&quot; in yellow text is superimposed over a low-angle shot of tall trees against a cloudy sky, with leaves framing the edges
+<span class="ts">[1.9s-4.8s]</span> <span class="tag">[visual]</span> A woman in a ponytail runs past a green chain-link fence, her face in profile, with trees and sky in the background
+<span class="ts">[2.0s-20.8s]</span> <span class="tag">[music]</span> Tense orchestral film score with strings and percussion accompanies the woman running through a forested path
+<span class="ts">[2.0s-20.8s]</span> <span class="tag">[sfx]</span> Mechanical typing on a typewriter sounds as the woman runs through the forest
+<span class="ts">[4.8s-7.9s]</span> <span class="tag">[visual]</span> A wide shot shows the woman running toward the camera on a covered walkway with green metal fencing, flanked by trees and buildings in the distance
+<span class="ts">[7.9s-9.4s]</span> <span class="tag">[visual]</span> A black sign with a white arrow pointing left and a white square with a running figure icon and the number &quot;1&quot; is mounted on a wooden post
+<span class="ts">[9.4s-10.8s]</span> <span class="tag">[visual]</span> The woman runs toward the camera on a dirt path in a wooded area, her hair in a ponytail, wearing a gray sports bra and black leggings
+<span class="ts">[10.1s-11.2s]</span> <span class="tag">[sfx]</span> A sharp metallic clank with resonant tail sounds as the woman runs through the forest
+<span class="ts">[10.8s-13.6s]</span> <span class="tag">[visual]</span> The woman slows, bends forward, and places her hands on her knees, catching her breath in the forest
+<span class="ts">[11.0s-20.0s]</span> <span class="tag">[sfx]</span> A high-pitched electronic whine with steady tone plays as the woman catches her breath in the woods
+<span class="ts">[13.6s-16.5s]</span> <span class="tag">[visual]</span> The woman drinks from a purple plastic bottle with a blue cap, her hair in a ponytail, in a forest setting
+<span class="ts">[16.0s-16.5s]</span> <span class="tag">[sfx]</span> A low-frequency thud with metallic resonance sounds as the woman drinks from the bottle
+<span class="ts">[16.5s-19.6s]</span> <span class="tag">[visual]</span> A close-up of the woman’s face as she runs, her hair whipping in the wind, with trees blurred in the background
+<span class="ts">[19.6s-20.9s]</span> <span class="tag">[visual]</span> Tall white flowers with green stems grow in the forest, with trees and a mossy rock in the background
+<span class="ts">[20.9s-23.1s]</span> <span class="tag">[visual]</span> The woman looks down at a red smartphone in her hands, her hair pulled back, in a forest setting
+<span class="ts">[23.1s-26.8s]</span> <span class="tag">[visual]</span> A close-up of the phone screen shows a text conversation with &quot;Pedro&quot; saying &quot;Hey beautiful&quot; and &quot;I like your pics on insta... it&#x27;s hot 🔥&quot;, with the woman typing &quot;Thank you&quot;
+<span class="ts">[26.0s-27.0s]</span> <span class="tag">[sfx]</span> A high-pitched electronic tone sounds as the woman types on her phone
+<span class="ts">[26.8s-28.3s]</span> <span class="tag">[visual]</span> A man with dark hair, glasses, and a beard, wearing a red t-shirt, smiles slightly as he walks in the forest
+<span class="ts">[26.9s-27.8s]</span> <span class="tag">[sfx]</span> A metal door closing with a thud sounds as the man smiles
+<span class="ts">[28.3s-33.3s]</span> <span class="tag">[visual]</span> The woman looks up, then a visual overlay of tree branches appears over her, transitioning to a low-angle shot of trees against a cloudy sky
+<span class="ts">[30.0s-58.4s]</span> <span class="tag">[sfx]</span> Footsteps on natural surface sound as the woman runs through the forest
+<span class="ts">[30.0s-60.0s]</span> <span class="tag">[background]</span> Birds chirping and insects buzzing in the forest as the woman runs and checks her phone
+<span class="ts">[33.3s-35.8s]</span> <span class="tag">[visual]</span> The woman inserts a white earbud into her right ear, her hair in a ponytail, in a forest setting
+<span class="ts">[35.8s-41.0s]</span> <span class="tag">[visual]</span> The woman runs with white earbuds in, her hair whipping in the wind, through a forest path with tall white flowers
+<span class="ts">[35.8s-48.4s]</span> <span class="tag">[music]</span> Orchestral film score with tense strings and brass plays as the woman runs with earbuds in
+<span class="ts">[41.0s-45.1s]</span> <span class="tag">[visual]</span> The woman slows, bends forward, and places her hands on her knees, catching her breath in the forest
+<span class="ts">[45.1s-50.0s]</span> <span class="tag">[visual]</span> The woman looks at her red phone, revealing a black cross tattoo on her left forearm, with a man in a yellow hoodie in the background
+<span class="ts">[48.5s-49.5s]</span> <span class="tag">[sfx]</span> A sharp metallic impact with resonant tail sounds as the woman holds her phone
+<span class="ts">[49.3s-50.2s]</span> <span class="tag">[sfx]</span> A heavy thud with low-frequency resonance sounds as the woman holds her phone
+<span class="ts">[50.0s-54.0s]</span> <span class="tag">[visual]</span> A close-up of the phone screen shows a new text conversation with &quot;Pedro&quot; saying &quot;No sexy pics to send?&quot; and &quot;I&#x27;m not in the mood feeling tired 😴&quot;, with the woman typing &quot;Ok... Maybe I can motivate you&quot;
+<span class="ts">[54.0s-56.0s]</span> <span class="tag">[visual]</span> The woman is bent over, and a man in a yellow hoodie walks away down the forest path
+<span class="ts">[56.0s-57.3s]</span> <span class="tag">[visual]</span> The woman holds her red phone up, looking at it, with trees and white flowers in the background
+<span class="ts">[57.3s-58.8s]</span> <span class="tag">[visual]</span> The woman holds her phone, with the man in the yellow hoodie walking away in the blurred background
+<span class="ts">[58.8s-60.0s]</span> <span class="tag">[visual]</span> A close-up of the woman’s face as she looks at her red phone, her hair in a ponytail, with trees blurred in the background
+<span class="ts">[60.0s-62.0s]</span> <span class="tag">[background]</span> Low ambient room tone
+<span class="ts">[60.0s-61.0s]</span> <span class="tag">[visual]</span> A woman in a beige tank top holds a red phone, wearing white earbuds, with green foliage blurred in the background
+<span class="ts">[61.0s-62.9s]</span> <span class="tag">[visual]</span> Tall green plants with white flowers and dark rocks on the forest floor, sunlight filtering through leaves
+<span class="ts">[62.5s-62.7s]</span> <span class="tag">[sfx]</span> A woman’s earbud clicks out as she turns away, her hair in motion
+<span class="ts">[62.8s-63.0s]</span> <span class="tag">[sfx]</span> Her foot thuds on the ground as she runs away through a forest with white flowers
+<span class="ts">[62.9s-65.6s]</span> <span class="tag">[visual]</span> The woman’s back is visible as she runs away through a forest with white flowers and green trees
+<span class="ts">[65.3s-89.6s]</span> <span class="tag">[music]</span> Tense orchestral film score with strings and brass
+<span class="ts">[65.7s-67.5s]</span> <span class="tag">[visual]</span> A low-angle shot of pink sneakers running on a concrete path between green chain-link fences
+<span class="ts">[67.5s-69.5s]</span> <span class="tag">[visual]</span> A wide shot of the woman running on a covered walkway with green fencing, trees on the left, and buildings in the distance
+<span class="ts">[69.5s-71.4s]</span> <span class="tag">[visual]</span> A close-up of tall green plants with white flowers in a sunlit forest
+<span class="ts">[71.4s-74.3s]</span> <span class="tag">[visual]</span> A close-up of the woman running, her hair flying, wearing a black tank top, with trees blurred in the background
+<span class="ts">[74.3s-76.9s]</span> <span class="tag">[visual]</span> The woman bends forward, breathing heavily, her hair damp, in a forest setting
+<span class="ts">[76.9s-78.4s]</span> <span class="tag">[visual]</span> A wide shot of a dirt path through a dense forest with tall trees and dappled sunlight
+<span class="ts">[78.4s-79.2s]</span> <span class="tag">[visual]</span> A close-up of the woman’s hands holding a red phone, wearing a black tank top, with green foliage in the background
+<span class="ts">[79.2s-82.9s]</span> <span class="tag">[visual]</span> A close-up of the phone screen showing a text conversation with &quot;Pedro&quot; and messages like &quot;Let me try babe&quot; and &quot;Been very busy, sorry&quot;
+<span class="ts">[82.9s-84.3s]</span> <span class="tag">[visual]</span> The woman looks at her phone, her expression serious, wearing a black tank top, with green foliage blurred behind her
+<span class="ts">[84.0s-84.5s]</span> <span class="tag">[sfx]</span> A high-pitched electronic tone sounds as she scrolls through a photo on her phone
+<span class="ts">[84.3s-86.8s]</span> <span class="tag">[visual]</span> The phone screen shows a photo of a person in a black hoodie with the text &quot;Look what I bought just for YOU&quot;
+<span class="ts">[85.2s-86.3s]</span> <span class="tag">[sfx]</span> A deep resonant impact as the photo of the hoodie appears on the phone screen
+<span class="ts">[86.8s-88.8s]</span> <span class="tag">[visual]</span> The woman looks at her phone, her expression shifting to concern, with green foliage in the background
+<span class="ts">[88.8s-92.8s]</span> <span class="tag">[visual]</span> The woman turns, her back to the camera, in a forest with white flowers, then looks over her shoulder
+<span class="ts">[90.0s-111.0s]</span> <span class="tag">[background]</span> Low ambient room tone
+<span class="ts">[90.0s-111.0s]</span> <span class="tag">[music]</span> High-pitched, sustained string note with a tense, suspenseful quality
+<span class="ts">[91.5s-95.6s]</span> <span class="tag">[sfx]</span> A deep, resonant orchestral hit as a gloved hand opens a black plastic bag on the forest floor
+<span class="ts">[92.8s-94.1s]</span> <span class="tag">[visual]</span> A close-up of a black plastic bag on the forest floor, with a gloved hand pulling out a leg
+<span class="ts">[94.1s-96.6s]</span> <span class="tag">[visual]</span> The back of a person in a black hooded jacket, standing in a forest
+<span class="ts">[96.6s-98.0s]</span> <span class="tag">[visual]</span> A black plastic bag lies on the forest floor, surrounded by plants and leaves
+<span class="ts">[98.0s-100.5s]</span> <span class="tag">[visual]</span> A gloved hand places a yellow cap on the black plastic bag
+<span class="ts">[100.5s-102.2s]</span> <span class="tag">[visual]</span> A gloved hand places a pair of glasses on the black plastic bag next to the yellow cap
+<span class="ts">[102.2s-103.7s]</span> <span class="tag">[visual]</span> A close-up of a yellow cap with text &quot;BETTER DAYS ARE COMING SOON WEEKEND COUNTDOWN&quot; and glasses on a black plastic bag
+<span class="ts">[102.5s-104.0s]</span> <span class="tag">[sfx]</span> A fast-moving air sound as wind blows over the cap and glasses on the bag
+<span class="ts">[103.7s-107.3s]</span> <span class="tag">[visual]</span> A gloved hand holds a compact and lipstick, opening the compact
+<span class="ts">[107.3s-110.9s]</span> <span class="tag">[visual]</span> A close-up of a gloved hand applying lipstick to lips, using the compact as a mirror
+<span class="ts">[110.9s-115.0s]</span> <span class="tag">[visual]</span> A woman in a black hooded jacket looks directly at the camera, her expression neutral, in a forest
+<span class="ts">[111.0s-115.0s]</span> <span class="tag">[music]</span> A low-frequency, resonant orchestral hit as the woman in the hooded jacket stares at the camera</pre></div></div><div class="qas"><div class="qa"><div class="q"><span class="qt">SR</span> What relationship between the deceased and the following characters is hinted by the glasses and yellow hat on the body bag? <span class="ok">✓</span></div><div class="opt">A. The man in red</div><div class="opt">B. female lead</div><div class="opt">C. Men in Black</div><div class="opt">D. Other runners</div><div class="opt">E. The female lead&#x27;s relatives and friends</div><div class="opt gold">F. Man in yellow clothes and glasses ← model</div><div class="ans">gold <b>F</b> · model <b>F</b></div></div><div class="qa"><div class="q"><span class="qt">IMC</span> What was the female lead&#x27;s intention in taking a photo of the man in the yellow clothes and glasses at 0:58? <span class="ok">✓</span></div><div class="opt gold">A. Select it as the killing target ← model</div><div class="opt">B. Record the scenery of the running route</div><div class="opt">C. Share with friends to recommend outfits.</div><div class="opt">D. Confirm whether the other party is tracking oneself.</div><div class="opt">E. Accidentally press the shutter while taking a selfie</div><div class="opt">F. Photograph strangers as material.</div><div class="ans">gold <b>A</b> · model <b>A</b></div></div><div class="qa"><div class="q"><span class="qt">TCI</span> What was the root cause of death for the man in the yellow clothes and glasses? <span class="ok">✓</span></div><div class="opt">A. Sudden illness and sudden death</div><div class="opt">B. Be attacked by a man in red clothes.</div><div class="opt">C. Accidentally fell while running</div><div class="opt">D. suicide</div><div class="opt">E. Be killed by mistake by the man in black</div><div class="opt gold">F. The female lead deliberately commits murder. ← model</div><div class="ans">gold <b>F</b> · model <b>F</b></div></div><div class="qa"><div class="q"><span class="qt">TA</span> Which of the following events are arranged in the correct chronological order?
+① The female lead takes a photo of a man in yellow. ② The female lead replies to a message and then continues running. ③ The body is wrapped in a black bag. ④ The female lead shows her face in the mirror. ⑤ The female lead locks eyes with a man in red. <span class="ok">✓</span></div><div class="opt">A. ⑤①②③④</div><div class="opt">B. ②⑤①③④</div><div class="opt">C. ⑤①③②④</div><div class="opt">D. ②①⑤③④</div><div class="opt gold">E. ⑤②①③④ ← model</div><div class="opt">F. ⑤③①②④</div><div class="ans">gold <b>E</b> · model <b>E</b></div></div><div class="qa"><div class="q"><span class="qt">MHR</span> What does the heroine&#x27;s action of placing her glasses and hat on the body bag in the 1:40 shot suggest? <span class="ok">✓</span></div><div class="opt">A. She is cleaning up the evidence at the scene.</div><div class="opt">B. She had a close relationship with the deceased.</div><div class="opt gold">C. She is the killer who murdered the man in yellow. ← model</div><div class="opt">D. She disguised herself as a man in black to dispose of the body.</div><div class="opt">E. She tried to shift the blame onto the man in yellow.</div><div class="opt">F. She sorted out the deceased&#x27;s belongings.</div><div class="ans">gold <b>C</b> · model <b>C</b></div></div><div class="qa"><div class="q"><span class="qt">MHR</span> What is the deeper meaning of the heroine taking a photo of the man in yellow in the 0:58 shot? <span class="ok">✓</span></div><div class="opt">A. Record the crime scene</div><div class="opt">B. Confirm the target identity</div><div class="opt">C. Leave an alibi</div><div class="opt">D. Pass information to accomplices</div><div class="opt">E. Unintentionally captured clues</div><div class="opt gold">F. Select the target for killing ← model</div><div class="ans">gold <b>F</b> · model <b>F</b></div></div><div class="qa"><div class="q"><span class="qt">CTI</span> What is the most likely core theme of the video? <span class="ok">✓</span></div><div class="opt">A. Modern people are overly dependent on mobile phones.</div><div class="opt">B. Running helps to relieve stress.</div><div class="opt gold">C. The killer may hide in an ordinary appearance. ← model</div><div class="opt">D. Don&#x27;t easily make eye contact with strangers.</div><div class="opt">E. Technology infringes on personal privacy.</div><div class="opt">F. Crime will eventually be punished.</div><div class="ans">gold <b>C</b> · model <b>C</b></div></div></div></div><h2 style="margin:34px 0 4px;font-size:1.25rem;color:#e6edf3;border-top:1px solid #21262d;padding-top:22px">WorldSense</h2><p style="color:#8b949e;margin:0 0 8px;font-size:13px">ITAD-S-V describe-then-reason &middot; score 59.0</p><div class="card"><div class="cid">KZsaltBw · Daily Life · 4/4 correct</div><div class="row"><div class="vidcol"><video controls preload="metadata" src="../assets/av/worldsense/KZsaltBw.mp4"></video></div><div class="capcol"><div class="caphdr">Full-video fused caption (windowed Qwen3-VL-32B grounder, 3K chars)</div><pre class="cap">OVERVIEW: Clear broadcast-quality recording in a reverberant indoor space with low-frequency hum, crowd murmur, and intermittent metallic clanks. One male middle-aged United States English speaker. Monologue with no other participants.
+
+AUDIO-VISUAL TIMELINE (visually grounded; &lt;text&gt;=on-screen text; &lt;speech&gt;=transcript):
+<span class="ts">[0.0s-26.4s]</span> <span class="tag">[background]</span> Low-frequency hum and crowd murmur as the scene opens on a black screen with white text <span class="ocr">&lt;text&gt;UNPREPARED PASSENGERS&lt;/text&gt;</span>
+<span class="ts">[0.0s-1.7s]</span> <span class="tag">[visual]</span> Black screen with white text <span class="ocr">&lt;text&gt;UNPREPARED PASSENGERS&lt;/text&gt;</span> centered
+<span class="ts">[1.1s-4.6s]</span> <span class="tag">[speech]</span> A male voiceover lists metallic items to remove as a TSA agent in blue uniform stands by the conveyor belt
+   &lt;speech&gt;&quot;What do I mean by metallic items, cell phone, key, change,&quot;&lt;/speech&gt;
+<span class="ts">[1.7s-11.7s]</span> <span class="tag">[visual]</span> TSA agent in blue uniform stands by conveyor belt as passengers approach; a man in a light shirt places items on the belt
+<span class="ts">[5.2s-6.4s]</span> <span class="tag">[speech]</span> The male voiceover continues, mentioning &quot;anything wrapped in foil&quot; as the man places items on the conveyor
+   &lt;speech&gt;&quot;anything wrapped in foil,&quot;&lt;/speech&gt;
+<span class="ts">[6.5s-9.5s]</span> <span class="tag">[speech]</span> The voiceover lists &quot;breath mint, gum, cigarettes, lighter&quot; as a woman in a beige coat approaches the conveyor
+   &lt;speech&gt;&quot;breath mint, gum, cigarettes, lighter stuff of that nature.&quot;&lt;/speech&gt;
+<span class="ts">[10.0s-11.7s]</span> <span class="tag">[speech]</span> The voiceover says &quot;You are going through a metal detector&quot; as the woman in the beige coat places her bag on the conveyor
+   &lt;speech&gt;&quot;You are going through a metal detector.&quot;&lt;/speech&gt;
+<span class="ts">[11.7s-21.7s]</span> <span class="tag">[visual]</span> Two women, one in beige coat and one with blonde hair, stand at the conveyor; TSA agents monitor screens
+<span class="ts">[12.2s-16.6s]</span> <span class="tag">[speech]</span> The voiceover explains what to do if the metal detector alarms as an agent looks at the screen
+   &lt;speech&gt;&quot;Should you alarm for whatever reason, the officer on the other end will instruct you what to do on the next step.&quot;&lt;/speech&gt;
+<span class="ts">[16.6s-17.6s]</span> <span class="tag">[sfx]</span> A metallic clank with reverberant tail as a passenger places a metal object on the conveyor
+<span class="ts">[17.6s-18.8s]</span> <span class="tag">[speech]</span> The voiceover says &quot;You can use a box&quot; as a white bin is placed on the conveyor
+   &lt;speech&gt;&quot;You can use a box.&quot;&lt;/speech&gt;
+<span class="ts">[19.4s-24.7s]</span> <span class="tag">[speech]</span> The voiceover instructs to place all items on the conveyor as passengers place belongings on the belt
+   &lt;speech&gt;&quot;Place all your items on there, your personal belongings, and make sure they are on the moving conveyor before you walk forward.&quot;&lt;/speech&gt;
+<span class="ts">[21.7s-31.7s]</span> <span class="tag">[visual]</span> Passengers wait at the conveyor; on-screen text <span class="ocr">&lt;text&gt;Meanwhile, everyone has to wait&lt;/text&gt;</span> appears
+<span class="ts">[26.4s-42.5s]</span> <span class="tag">[background]</span> Distant crowd murmur as passengers wait and agents monitor the screen
+   &lt;speech&gt;&quot;No drinks of any kind are allowed from the outside.&quot;&lt;/speech&gt;
+<span class="ts">[27.7s-30.1s]</span> <span class="tag">[speech]</span> The voiceover says &quot;No drinks of any kind are allowed from the outside&quot; as text <span class="ocr">&lt;text&gt;It takes about 4 minutes for the officer to arrive&lt;/text&gt;</span> appears
+   &lt;speech&gt;&quot;If you have any intended drink, now is the time to discard them.&quot;&lt;/speech&gt;
+<span class="ts">[30.5s-32.9s]</span> <span class="tag">[speech]</span> The voiceover says &quot;If you have any intended drink, now is the time to discard them&quot; as agents prepare to search a bag
+<span class="ts">[31.7s-41.7s]</span> <span class="tag">[visual]</span> TSA agents search a bag; on-screen text <span class="ocr">&lt;text&gt;Now they search her bag&lt;/text&gt;</span> appears
+<span class="ts">[35.3s-36.5s]</span> <span class="tag">[sfx]</span> Footsteps on hard floor as an agent walks toward the conveyor
+   &lt;speech&gt;&quot;And we&#x27;re just gonna continue moving forward when you&#x27;re ready.&quot;&lt;/speech&gt;
+<span class="ts">[38.3s-40.9s]</span> <span class="tag">[speech]</span> The voiceover says &quot;And we&#x27;re just gonna continue moving forward when you&#x27;re ready&quot; as passengers wait
+<span class="ts">[41.7s-42.5s]</span> <span class="tag">[visual]</span> An agent searches a bag; on-screen text <span class="ocr">&lt;text&gt;She has large hair spray and a water bottle in her bag&lt;/text&gt;</span> appears
+
+ON-SCREEN TEXT (OCR): UNPREPARED PASSENGERS | Meanwhile, everyone has to wait | It takes about 4 minutes for the officer to arrive | Now they search her bag | She has large hair spray and a water bottle in her bag</pre></div></div><div class="qas"><div class="qa"><div class="q"><span class="qt">Video Emotions</span> What is the overall atmosphere of the entire video? <span class="ok">✓</span></div><div class="opt">A. Plain.</div><div class="opt">B. Lively.</div><div class="opt">C. Relaxed.</div><div class="opt gold">D. Tense. ← model</div><div class="ans">gold <b>D</b> · model <b>D</b></div></div><div class="qa"><div class="q"><span class="qt">Event Sorting</span> What is the process followed by the security officer after discovering a firearm? <span class="ok">✓</span></div><div class="opt">A. Open and search the bag, alert authorities, and then call the supervisor.</div><div class="opt">B. Alert authorities, call the supervisor, and then open and search the bag.</div><div class="opt gold">C. Call the supervisor, alert authorities, and then open and search the bag. ← model</div><div class="opt">D. Open and search the bag, call the supervisor, and then alert authorities.</div><div class="ans">gold <b>C</b> · model <b>C</b></div></div><div class="qa"><div class="q"><span class="qt">Event Recognition</span> What did the police officer do after confirming there was a gun in the bag in the video? <span class="ok">✓</span></div><div class="opt gold">A. Escort the woman away. ← model</div><div class="opt">B. Speak with the woman to provide education.</div><div class="opt">C. Confiscate the gun.</div><div class="opt">D. Detain the woman.</div><div class="ans">gold <b>A</b> · model <b>A</b></div></div><div class="qa"><div class="q"><span class="qt">Attribute Recognition</span> What is the color of the box used for holding passengers&#x27; items during security checks in the video? <span class="ok">✓</span></div><div class="opt">A. Transparent.</div><div class="opt">B. Gray.</div><div class="opt gold">C. White. ← model</div><div class="opt">D. Black.</div><div class="ans">gold <b>C</b> · model <b>C</b></div></div></div></div><div class="card"><div class="cid">eXaCGcXh · Games · 4/4 correct</div><div class="row"><div class="vidcol"><video controls preload="metadata" src="../assets/av/worldsense/eXaCGcXh.mp4"></video></div><div class="capcol"><div class="caphdr">Full-video fused caption (windowed Qwen3-VL-32B grounder, 22K chars)</div><pre class="cap">OVERVIEW: Studio-quality recording with clean acoustics and no background noise; one male young adult Australian English speaker; monologue accompanied by continuous upbeat chiptune music and a sigh sound effect.
+
+AUDIO-VISUAL TIMELINE (visually grounded; &lt;text&gt;=on-screen text; &lt;speech&gt;=transcript):
+<span class="ts">[0.0s-0.5s]</span> <span class="tag">[speech]</span> A man with long hair adjusts his hair with both hands, smiling, while speaking into a microphone
+<span class="ts">[0.0s-10.0s]</span> <span class="tag">[visual]</span> A man in a red &quot;NONTENDO PODCAST&quot; shirt sits before a microphone, with a neon Triforce sign, a YouTube Gold Play Button, and a plant in the background
+   &lt;speech&gt;&quot;Really good.&quot;&lt;/speech&gt;
+<span class="ts">[0.1s-26.6s]</span> <span class="tag">[music]</span> Upbeat chiptune electronic music plays as the man speaks into the microphone
+<span class="ts">[0.9s-3.3s]</span> <span class="tag">[speech]</span> The man speaks with hands raised, gesturing as he talks into the microphone
+   &lt;speech&gt;&quot;I want to clarify, I&#x27;m just, I&#x27;m just a little&quot;&lt;/speech&gt;
+<span class="ts">[4.0s-6.4s]</span> <span class="tag">[speech]</span> The man speaks with a serious expression, looking slightly down into the microphone
+   &lt;speech&gt;&quot;burnt out and frustrated and tired.&quot;&lt;/speech&gt;
+<span class="ts">[7.0s-10.1s]</span> <span class="tag">[speech]</span> The man speaks, glancing to the side, with his hands resting on the desk
+   &lt;speech&gt;&quot;And it&#x27;s not just Nintendo, it&#x27;s the state of the world. I mean,&quot;&lt;/speech&gt;
+<span class="ts">[10.0s-16.1s]</span> <span class="tag">[visual]</span> The man continues speaking into the microphone, with the neon Triforce sign and plant visible behind him
+<span class="ts">[10.5s-12.9s]</span> <span class="tag">[speech]</span> The man speaks with hands slightly raised, emphasizing his words into the microphone
+   &lt;speech&gt;&quot;Xbox has been nothing this year as well.&quot;&lt;/speech&gt;
+<span class="ts">[13.2s-16.4s]</span> <span class="tag">[speech]</span> The man speaks with a neutral expression, looking forward into the microphone
+   &lt;speech&gt;&quot;PlayStation has been struggling to stay afloat. And to be honest,&quot;&lt;/speech&gt;
+<span class="ts">[16.1s-20.8s]</span> <span class="tag">[visual]</span> Gameplay of Ubisoft’s OddBallers shows characters navigating a field with red propane tanks, with the man’s face in a small window
+<span class="ts">[16.8s-21.5s]</span> <span class="tag">[speech]</span> The man speaks while gameplay of OddBallers is shown, with characters moving around red tanks
+   &lt;speech&gt;&quot;Nintendo is really doing the best job out of everyone at getting releases out constantly.&quot;&lt;/speech&gt;
+<span class="ts">[20.8s-22.7s]</span> <span class="tag">[visual]</span> Gameplay shows characters on a boat, with the man’s face in a small window, reacting to the game
+<span class="ts">[21.8s-26.3s]</span> <span class="tag">[speech]</span> The man speaks while gameplay of a mobile game with colorful characters is shown
+   &lt;speech&gt;&quot;Albeit some of them being very lackluster, but at least things are happening.&quot;&lt;/speech&gt;
+<span class="ts">[22.7s-27.7s]</span> <span class="tag">[visual]</span> A mobile game screen shows colorful characters on a grassy field, with the man’s face in a small window
+<span class="ts">[26.6s-27.2s]</span> <span class="tag">[sfx]</span> The man exhales audibly, a low breathy sigh escaping as he speaks
+<span class="ts">[27.3s-30.1s]</span> <span class="tag">[speech]</span> The man speaks with a self-aware tone, looking slightly apologetic into the microphone
+   &lt;speech&gt;&quot;God, I went a little hard there. Sorry. Let me reel it back in.&quot;&lt;/speech&gt;
+<span class="ts">[27.4s-56.8s]</span> <span class="tag">[music]</span> Energetic electronic video game music plays as the man speaks and reacts to the Fire Emblem trailer
+<span class="ts">[27.7s-35.7s]</span> <span class="tag">[visual]</span> The man speaks into the microphone, with the neon Triforce sign and plant visible behind him
+<span class="ts">[30.3s-34.1s]</span> <span class="tag">[speech]</span> The man speaks with a smile, looking forward into the microphone
+   &lt;speech&gt;&quot;Alright, now I got all that out my system. We can take a look at the stuff I really liked.&quot;&lt;/speech&gt;
+<span class="ts">[34.5s-35.8s]</span> <span class="tag">[speech]</span> The man speaks with excitement, eyes wide, into the microphone
+   &lt;speech&gt;&quot;There&#x27;s a new Fire Emblem.&quot;&lt;/speech&gt;
+<span class="ts">[35.7s-38.6s]</span> <span class="tag">[visual]</span> A Fire Emblem trailer shows a group of heroes in battle, with a dragon in the background
+<span class="ts">[35.9s-37.0s]</span> <span class="tag">[speech]</span> A female voice speaks over the Fire Emblem trailer, describing the Warriors of the nation
+   &lt;speech&gt;&quot;The Warriors of our nation.&quot;&lt;/speech&gt;
+<span class="ts">[37.0s-38.1s]</span> <span class="tag">[speech]</span> The man speaks with surprise, reacting to the Fire Emblem trailer
+   &lt;speech&gt;&quot;Is it actually Fire Emblem?&quot;&lt;/speech&gt;
+<span class="ts">[38.6s-40.7s]</span> <span class="tag">[visual]</span> The Fire Emblem trailer shows a dragon breaking through a wall, with cracks spreading
+<span class="ts">[38.8s-43.2s]</span> <span class="tag">[speech]</span> The man speaks while the Fire Emblem trailer plays, describing the war with the fell dragon
+   &lt;speech&gt;&quot;It is more Fire Emblem? I made a tweet yesterday, by the way. I was like, uh...&quot;&lt;/speech&gt;
+<span class="ts">[40.7s-43.5s]</span> <span class="tag">[visual]</span> The Fire Emblem trailer shows a large dragon flying against a cloudy sky
+<span class="ts">[43.5s-46.9s]</span> <span class="tag">[speech]</span> The man speaks while a tweet from Wood Hawker is shown, listing Fire Emblem, Xenoblade, and New Kirby
+<span class="ts">[43.5s-47.4s]</span> <span class="tag">[visual]</span> A tweet from Wood Hawker reads: &quot;The only 3 things that EVERY Nintendo Fan want to see tomorrow: 1. Fire Emblem 2. Xenoblade 3. New Kirby&quot;
+   &lt;speech&gt;&quot;All we want from this direct is new Fire Emblem, Inerblade, and new Kirby.&quot;&lt;/speech&gt;
+<span class="ts">[47.2s-50.1s]</span> <span class="tag">[speech]</span> The man speaks with amusement, looking forward into the microphone
+   &lt;speech&gt;&quot;I had no idea Nintendo was gonna take that seriously.&quot;&lt;/speech&gt;
+<span class="ts">[47.4s-49.9s]</span> <span class="tag">[visual]</span> The man speaks into the microphone, with the neon Triforce sign and plant visible behind him
+<span class="ts">[49.9s-52.7s]</span> <span class="tag">[visual]</span> The Fire Emblem trailer shows a group of heroes in battle, with the man’s face in a small window
+<span class="ts">[50.3s-53.8s]</span> <span class="tag">[speech]</span> The man speaks with a playful tone, reacting to the Fire Emblem trailer
+   &lt;speech&gt;&quot;That was a joke because people are so burned out on all of these things, but&quot;&lt;/speech&gt;
+<span class="ts">[52.7s-55.4s]</span> <span class="tag">[visual]</span> The Fire Emblem trailer shows a character with blue and red hair, wearing a white and gold outfit
+<span class="ts">[54.1s-55.9s]</span> <span class="tag">[speech]</span> The man speaks with excitement, describing the new Fire Emblem game
+   &lt;speech&gt;&quot;regardless, this is a brand new,&quot;&lt;/speech&gt;
+<span class="ts">[55.4s-56.8s]</span> <span class="tag">[visual]</span> The Fire Emblem trailer shows a character facing a large white dragon in a grassy field
+<span class="ts">[56.2s-57.2s]</span> <span class="tag">[speech]</span> The man speaks with enthusiasm, describing the full Fire Emblem game
+   &lt;speech&gt;&quot;full Fire Emblem.&quot;&lt;/speech&gt;
+<span class="ts">[56.8s-58.2s]</span> <span class="tag">[visual]</span> The Fire Emblem trailer shows a character with a sword facing a dragon in a mountainous landscape
+<span class="ts">[57.2s-60.7s]</span> <span class="tag">[speech]</span> The man speaks with a clear, happy tone, expressing excitement for the new Fire Emblem game
+<span class="ts">[57.2s-87.2s]</span> <span class="tag">[music]</span> Upbeat chiptune electronic music plays as the man speaks and reacts to the Fire Emblem trailer
+   &lt;speech&gt;&quot;game. I loved Three Hopes and I&#x27;m really excited for this.&quot;&lt;/speech&gt;
+<span class="ts">[58.2s-59.7s]</span> <span class="tag">[visual]</span> The Fire Emblem trailer shows a close-up of the character’s face, with blue and red hair and red eyes
+<span class="ts">[59.7s-60.0s]</span> <span class="tag">[visual]</span> The Fire Emblem trailer shows the character from behind, standing in a grassy field with a tree and a distant figure
+<span class="ts">[60.0s-61.2s]</span> <span class="tag">[visual]</span> A knight in a white and red cape stands in a grassy field holding a sword, facing a distant figure under a tree. A windmill and village are in the background. The streamer is visible in a small window in the bottom right.
+<span class="ts">[61.2s-64.2s]</span> <span class="tag">[visual]</span> The &quot;FIRE EMBLEM ENGAGE&quot; title logo appears on a dark background with glowing red and blue edges. The streamer remains in the bottom right corner.
+<span class="ts">[61.3s-66.4s]</span> <span class="tag">[speech]</span> The streamer speaks into a microphone, expressing burnout on RPGs, while the title screen remains visible.
+   &lt;speech&gt;&quot;It is a tough sell for me right now because I&#x27;m so burned out on RPGs, you know, I&#x27;m&quot;&lt;/speech&gt;
+<span class="ts">[64.2s-65.2s]</span> <span class="tag">[visual]</span> A female character with silver hair, golden eyes, and a red dress with a plaid scarf appears, saying “you’re awake” in a subtitle. The streamer is in the corner.
+<span class="ts">[65.2s-66.2s]</span> <span class="tag">[visual]</span> A male character with red and blue hair, wearing a white and gold armored outfit, stands in a bright, ethereal space with columns. The subtitle “you’re awake” remains.
+<span class="ts">[66.2s-67.8s]</span> <span class="tag">[visual]</span> Two female characters appear side-by-side: one with silver hair in a green outfit, the other with silver hair in a red dress. Both have golden eyes. The streamer is in the corner.
+<span class="ts">[66.6s-69.3s]</span> <span class="tag">[speech]</span> The streamer speaks while the two female characters remain on screen, mentioning playing Xenoblade 3.
+   &lt;speech&gt;&quot;still trying to play through Xenoblade 3. I&#x27;m hours into that.&quot;&lt;/speech&gt;
+<span class="ts">[67.8s-69.4s]</span> <span class="tag">[visual]</span> A close-up of the male character with red and blue hair, now with a serious expression, in the same ethereal setting. The streamer is still visible.
+<span class="ts">[69.4s-80.4s]</span> <span class="tag">[visual]</span> The streamer, wearing a red “Nintendo Podcast” shirt, speaks into a microphone in his room. Behind him, a neon Triforce sign glows. He discusses being burned out on RPGs and mentions Triangle Strategy and Octopath 2.
+<span class="ts">[69.6s-72.6s]</span> <span class="tag">[speech]</span> The streamer speaks with a mid-pitch, conversational tone, discussing how Live or Alive was put on hold.
+   &lt;speech&gt;&quot;Live or alive got put on the back burner because of that game.&quot;&lt;/speech&gt;
+<span class="ts">[72.9s-78.2s]</span> <span class="tag">[speech]</span> The streamer speaks with a higher pitch and more enthusiasm, talking about Triangle Strategy and needing to get back to it.
+   &lt;speech&gt;&quot;And I try playing triangle strategy and I just didn&#x27;t have the time and fell out of it. I need to get back to it.&quot;&lt;/speech&gt;
+<span class="ts">[78.2s-81.4s]</span> <span class="tag">[speech]</span> The streamer speaks with high energy, mentioning Octopath 2. The camera remains on him.
+   &lt;speech&gt;&quot;I have to get back to it quick because Octopath 2 is on the way.&quot;&lt;/speech&gt;
+<span class="ts">[80.4s-82.3s]</span> <span class="tag">[visual]</span> A courtroom scene from the game shows a character sentenced to life imprisonment on Fright Isle. The text “The Scholar” is visible. The streamer is in the corner.
+<span class="ts">[81.9s-87.1s]</span> <span class="tag">[speech]</span> The streamer speaks while the courtroom scene remains, expressing excitement for Octopath 2.
+   &lt;speech&gt;&quot;And I, it&#x27;s like, yeah, I&#x27;m really excited for that because it&#x27;s Octopath. And I thought they were done with Octopath.&quot;&lt;/speech&gt;
+<span class="ts">[82.3s-84.6s]</span> <span class="tag">[visual]</span> An illustrated character in a purple dress with chains appears, with the text “A journey for freedom” and “The Thief.” The streamer is still visible.
+<span class="ts">[84.6s-86.5s]</span> <span class="tag">[visual]</span> A character stands on a rooftop in a cityscape, with “The Thief” text. The streamer is still visible.
+<span class="ts">[86.5s-88.1s]</span> <span class="tag">[visual]</span> An illustrated character in a white and green robe appears, with the text “A journey for truth” and “The Cleric.” The streamer is still visible.
+<span class="ts">[87.2s-89.8s]</span> <span class="tag">[speech]</span> The streamer speaks while the Cleric illustration remains, saying he thought Triangle Strategy was the end of Octopath.
+   &lt;speech&gt;&quot;I thought Triangle Strategy was them moving on from Octopath.&quot;&lt;/speech&gt;
+<span class="ts">[87.3s-117.0s]</span> <span class="tag">[music]</span> Upbeat chiptune music plays as the video shows various gameplay scenes: a village, a town square, a throne room, a moonlit cliff, a burning village, a cave, and a cliffside with a lion. The streamer is visible throughout.
+<span class="ts">[88.2s-89.5s]</span> <span class="tag">[visual]</span> A village with a church and a character named “Perniffjorg” saying “The truth.” The streamer is still visible.
+<span class="ts">[89.5s-90.4s]</span> <span class="tag">[visual]</span> A cliffside village with autumn trees. The streamer is still visible.
+<span class="ts">[89.9s-94.4s]</span> <span class="tag">[speech]</span> The streamer speaks while the music continues and the scenes change, expressing excitement for a new Octopath game.
+   &lt;speech&gt;&quot;So to find out I&#x27;m getting a new Octopath, let&#x27;s say at another time, is so exciting.&quot;&lt;/speech&gt;
+<span class="ts">[90.4s-91.9s]</span> <span class="tag">[visual]</span> A town square with a character named “Agnea” saying “Oh my—.” The streamer is still visible.
+<span class="ts">[91.9s-93.1s]</span> <span class="tag">[visual]</span> A throne room with a character being attacked. The streamer is still visible.
+<span class="ts">[93.1s-94.2s]</span> <span class="tag">[visual]</span> Three characters stand on a cliff under a full moon. The streamer is still visible.
+<span class="ts">[94.2s-95.7s]</span> <span class="tag">[visual]</span> A burning village at night. The streamer is still visible.
+<span class="ts">[94.6s-99.0s]</span> <span class="tag">[speech]</span> The streamer speaks while the music continues and the scenes change, expressing that the game is a big chore and he’s not ready for it.
+   &lt;speech&gt;&quot;But at the same time, it&#x27;s a big chore and an undertaking and I&#x27;m just not ready for it.&quot;&lt;/speech&gt;
+<span class="ts">[95.7s-97.3s]</span> <span class="tag">[visual]</span> A cave with a character named “Casti” saying “I think I’ve found the source.” The streamer is still visible.
+<span class="ts">[97.3s-98.7s]</span> <span class="tag">[visual]</span> A character named “Ochette” on a cliff with a lion, saying “Tasty stuff, huh?” The streamer is still visible.
+<span class="ts">[98.7s-99.8s]</span> <span class="tag">[visual]</span> A town square with multiple characters. The streamer is still visible.
+<span class="ts">[99.3s-100.5s]</span> <span class="tag">[speech]</span> The streamer speaks while the town square scene remains, saying “I need something else.”
+   &lt;speech&gt;&quot;I need something else.&quot;&lt;/speech&gt;
+<span class="ts">[99.8s-110.6s]</span> <span class="tag">[visual]</span> The streamer in his room speaks into a microphone, gesturing and expressing a desire for a short, fun action game.
+<span class="ts">[100.7s-103.5s]</span> <span class="tag">[speech]</span> The streamer speaks with a mid-pitch, conversational tone, asking for a short game.
+   &lt;speech&gt;&quot;I need a fun like action game or something short.&quot;&lt;/speech&gt;
+<span class="ts">[103.5s-105.1s]</span> <span class="tag">[speech]</span> The streamer speaks with mid-pitch, saying “Give me something short, God.”
+   &lt;speech&gt;&quot;Give me something short, God.&quot;&lt;/speech&gt;
+<span class="ts">[105.4s-108.7s]</span> <span class="tag">[speech]</span> The streamer speaks with low pitch and low loudness, saying he would die for an 8-hour game.
+   &lt;speech&gt;&quot;I never thought I would ask for a game that was only eight hours, but I would&quot;&lt;/speech&gt;
+<span class="ts">[108.9s-110.5s]</span> <span class="tag">[speech]</span> The streamer speaks with low pitch and high loudness, saying “die for that right now, Nintendo.”
+   &lt;speech&gt;&quot;die for that right now, Nintendo.&quot;&lt;/speech&gt;
+<span class="ts">[110.6s-111.0s]</span> <span class="tag">[visual]</span> The two female characters from earlier appear again. The streamer is still visible.
+<span class="ts">[110.7s-111.8s]</span> <span class="tag">[speech]</span> The streamer speaks while the two female characters remain on screen, saying “Those two, by the way.”
+   &lt;speech&gt;&quot;Those two, by the way,&quot;&lt;/speech&gt;
+<span class="ts">[111.0s-113.9s]</span> <span class="tag">[visual]</span> A close-up of the male character with red and blue hair, now with a more intense expression. The streamer is still visible.
+<span class="ts">[112.2s-116.8s]</span> <span class="tag">[speech]</span> The streamer speaks while the male character remains on screen, calling the two characters the biggest reveals.
+   &lt;speech&gt;&quot;easily the biggest and most hyped reveals of this entire thing, in my opinion.&quot;&lt;/speech&gt;
+<span class="ts">[113.9s-115.1s]</span> <span class="tag">[visual]</span> Two corrupted enemies with glowing red eyes appear in a grassy field. The streamer is still visible.
+<span class="ts">[115.1s-116.0s]</span> <span class="tag">[visual]</span> Four characters stand together in a grassy field. The streamer is still visible.
+<span class="ts">[116.0s-118.6s]</span> <span class="tag">[visual]</span> Top-down gameplay shows a character named “Alear” facing an enemy named “Corrupted.” The streamer is still visible.
+<span class="ts">[117.2s-130.1s]</span> <span class="tag">[music]</span> Energetic electronic music plays as the gameplay continues, showing combat between Alear and the Corrupted enemy. The streamer is still visible.
+<span class="ts">[117.3s-122.1s]</span> <span class="tag">[speech]</span> The streamer speaks with enthusiasm, describing the reveal of games with story and cinematics.
+   &lt;speech&gt;&quot;These are games getting revealed for the first time with story and cinematics and&quot;&lt;/speech&gt;
+<span class="ts">[118.6s-120.0s]</span> <span class="tag">[visual]</span> A 3D combat sequence shows Alear attacking the Corrupted enemy. The streamer is still visible.
+<span class="ts">[120.0s-120.9s]</span> <span class="tag">[visual]</span> 3D fighting game scene with two characters battling in a village with windmills; UI shows &quot;Alear&quot; and &quot;Corrupted&quot; with HP bars and stats; streamer in bottom-right corner
+<span class="ts">[120.9s-122.9s]</span> <span class="tag">[visual]</span> Character &quot;Alear&quot; attacks with a glowing sword, hitting &quot;Corrupted&quot; who recoils; &quot;Miss!&quot; text appears; windmills and trees in background; streamer watches intently
+<span class="ts">[122.2s-127.6s]</span> <span class="tag">[speech]</span> Streamer speaks enthusiastically while 2D RPG gameplay shows characters on a cliff with dialogue &quot;Let&#x27;s go, Temenos. There&#x27;s nothing left for us here.&quot;
+   &lt;speech&gt;&quot;gameplay. That is what I love in these directs. And those were the two that did that.&quot;&lt;/speech&gt;
+<span class="ts">[122.9s-123.9s]</span> <span class="tag">[visual]</span> 2D RPG scene with characters on a cliff overlooking misty valley; autumn trees and wooden houses; dialogue box from &quot;Throné&quot; visible
+<span class="ts">[123.9s-125.4s]</span> <span class="tag">[visual]</span> 2D RPG scene at grand palace entrance with statues and lanterns; character &quot;Agnea&quot; speaks with dialogue &quot;Oh my—&quot; as others stand nearby
+<span class="ts">[125.4s-126.6s]</span> <span class="tag">[visual]</span> 2D RPG scene in a checkered hall with torches and thrones; character runs toward a glowing platform at the end of the hall
+<span class="ts">[126.6s-127.7s]</span> <span class="tag">[visual]</span> 2D RPG scene on a cliff under a full moon; three characters stand together; a glowing meteor streaks across the dark sky
+<span class="ts">[127.7s-129.1s]</span> <span class="tag">[visual]</span> 2D RPG scene of a village at night with buildings on fire; lanterns glow; character runs down a cobblestone path toward the flames
+<span class="ts">[128.0s-129.4s]</span> <span class="tag">[speech]</span> Streamer speaks while fiery village scene is shown; says &quot;We had Pikmin 4.&quot;
+   &lt;speech&gt;&quot;We had Pikmin 4.&quot;&lt;/speech&gt;
+<span class="ts">[129.1s-129.7s]</span> <span class="tag">[visual]</span> 2D RPG scene in a dark cave with glowing green creature; dialogue box from &quot;Castu&quot; says &quot;I think I&#x27;ve found t&quot;
+<span class="ts">[129.7s-132.5s]</span> <span class="tag">[visual]</span> Streamer with long hair and red &quot;Nintendo Podcast&quot; shirt speaks into microphone; neon Triforce sign in background; hands gesturing
+<span class="ts">[130.1s-155.0s]</span> <span class="tag">[music]</span> Energetic chiptune music plays as streamer speaks and gameplay transitions from Pikmin 4 to Zelda
+   &lt;speech&gt;&quot;Title screen. It&#x27;s kinda hard to get excited for a title. So there&#x27;s really not much I can say about that.&quot;&lt;/speech&gt;
+<span class="ts">[130.7s-135.8s]</span> <span class="tag">[speech]</span> Streamer speaks while Pikmin 4 title screen is shown; says &quot;Title screen. It&#x27;s kinda hard to get excited for a title.&quot;
+<span class="ts">[132.5s-137.6s]</span> <span class="tag">[visual]</span> &quot;PIKMIN 4&quot; title screen with green text and flowers; small Pikmin character appears; streamer reacts in bottom-right corner
+   &lt;speech&gt;&quot;I do love Pikmin though, but again, I&#x27;m just...&quot;&lt;/speech&gt;
+<span class="ts">[136.2s-138.6s]</span> <span class="tag">[speech]</span> Streamer speaks while Pikmin 4 title screen is shown; says &quot;I do love Pikmin though, but again, I&#x27;m just...&quot;
+<span class="ts">[137.6s-143.8s]</span> <span class="tag">[visual]</span> Streamer speaks into microphone with hands raised; neon Triforce sign and framed awards visible in background
+   &lt;speech&gt;&quot;I&#x27;m not a guy that can get excited for a title, which is also why...&quot;&lt;/speech&gt;
+<span class="ts">[139.7s-143.5s]</span> <span class="tag">[speech]</span> Streamer speaks while Zelda gameplay begins; says &quot;I&#x27;m not a guy that can get excited for a title, which is also why...&quot;
+<span class="ts">[143.8s-146.6s]</span> <span class="tag">[visual]</span> Zelda gameplay: character falls from sky through clouds; large rock formation descends; streamer reacts with &quot;Ahhh, more gameplay.&quot;
+   &lt;speech&gt;&quot;Ahhh, more gameplay.&quot;&lt;/speech&gt;
+<span class="ts">[144.1s-146.1s]</span> <span class="tag">[speech]</span> Streamer speaks while Zelda gameplay shows falling character; says &quot;Ahhh, more gameplay.&quot;
+<span class="ts">[146.6s-149.3s]</span> <span class="tag">[visual]</span> Zelda gameplay: character climbs underwater rock formation; glowing yellow coral; streamer says &quot;Oh my god, look at his hair.&quot;
+   &lt;speech&gt;&quot;Oh my god, look at his hair.&quot;&lt;/speech&gt;
+<span class="ts">[148.3s-149.4s]</span> <span class="tag">[speech]</span> Streamer speaks while character climbs underwater; says &quot;Oh my god, look at his hair.&quot;
+<span class="ts">[149.3s-159.3s]</span> <span class="tag">[visual]</span> Zelda gameplay: character glides through sky on winged object; sunsets over floating islands; enters green glowing portal
+   &lt;speech&gt;&quot;My god, look at him full.&quot;&lt;/speech&gt;
+<span class="ts">[150.2s-151.2s]</span> <span class="tag">[speech]</span> Streamer speaks while character glides; says &quot;My god, look at him full.&quot;
+<span class="ts">[154.9s-176.7s]</span> <span class="tag">[music]</span> Cinematic orchestral music plays as Zelda title sequence reveals &quot;The Legend of Zelda: Tears of the Kingdom&quot;
+<span class="ts">[158.4s-160.2s]</span> <span class="tag">[speech]</span> Streamer speaks as Zelda logo appears; says &quot;If that&#x27;s all we get, I&#x27;m gonna vomit.&quot;
+   &lt;speech&gt;&quot;If that&#x27;s all we get, I&#x27;m gonna vomit.&quot;&lt;/speech&gt;
+<span class="ts">[159.3s-169.3s]</span> <span class="tag">[visual]</span> &quot;The Legend of Zelda: Tears of the Kingdom&quot; title revealed with green circular emblem; Nintendo Switch logo appears
+<span class="ts">[160.9s-162.3s]</span> <span class="tag">[speech]</span> Streamer speaks as Zelda title is shown; says &quot;The Legend of Zelda, give me a title!&quot;
+   &lt;speech&gt;&quot;The Legend of Zelda, give me a title!&quot;&lt;/speech&gt;
+<span class="ts">[162.6s-163.3s]</span> <span class="tag">[background]</span> Low ambient room tone as Zelda title remains on screen
+<span class="ts">[163.4s-166.4s]</span> <span class="tag">[speech]</span> Streamer speaks as Zelda title is shown; says &quot;Tears of the Kingdom? I have CHILLS!&quot;
+   &lt;speech&gt;&quot;Tears of the Kingdom? I have CHILLS!&quot;&lt;/speech&gt;
+<span class="ts">[167.0s-168.3s]</span> <span class="tag">[speech]</span> Streamer speaks as Zelda title is shown; says &quot;Tears of the Kingdom?&quot;
+   &lt;speech&gt;&quot;Tears of the Kingdom?&quot;&lt;/speech&gt;
+<span class="ts">[168.7s-172.0s]</span> <span class="tag">[speech]</span> Streamer speaks as Zelda title is shown; says &quot;Oh my god, we got a title, baby!&quot;
+   &lt;speech&gt;&quot;Oh my god, we got a title, baby!&quot;&lt;/speech&gt;
+<span class="ts">[169.3s-179.3s]</span> <span class="tag">[visual]</span> &quot;The Legend of Zelda: Tears of the Kingdom&quot; title with Nintendo Switch logo; release date &quot;5.12.2023&quot; appears
+<span class="ts">[172.6s-176.2s]</span> <span class="tag">[speech]</span> Streamer speaks as release date is shown; says &quot;That&#x27;s... kind of all this director was for a title.&quot;
+   &lt;speech&gt;&quot;That&#x27;s... kind of all this director was for a title.&quot;&lt;/speech&gt;
+<span class="ts">[177.1s-178.1s]</span> <span class="tag">[speech]</span> Streamer speaks as release date is shown; says &quot;And the release date!&quot;
+   &lt;speech&gt;&quot;And the release date!&quot;&lt;/speech&gt;
+<span class="ts">[178.1s-181.2s]</span> <span class="tag">[speech]</span> Streamer speaks as Nintendo logo appears; says &quot;Ah! May! May! May!&quot;
+   &lt;speech&gt;&quot;Ah! May! May! May!&quot;&lt;/speech&gt;
+<span class="ts">[179.3s-180.0s]</span> <span class="tag">[visual]</span> Red screen with white &quot;Nintendo&quot; logo centered
+<span class="ts">[180.0s-180.3s]</span> <span class="tag">[visual]</span> Dark red screen with a faint white Nintendo logo centered, transitioning to full brightness
+<span class="ts">[180.3s-181.3s]</span> <span class="tag">[visual]</span> Bright red screen with a white Nintendo logo centered, no text or additional graphics
+<span class="ts">[181.3s-182.4s]</span> <span class="tag">[visual]</span> A man with long brown hair and a beard, wearing a red &quot;Nintendo Podcast&quot; t-shirt, speaks into a black microphone; behind him, a purple and yellow neon Triforce sign glows on the wall, with a framed YouTube play button and plants visible
+<span class="ts">[181.4s-196.9s]</span> <span class="tag">[music]</span> Upbeat pop music with synthesized bass, electronic drums, and bright synth chords plays over the Nintendo Direct reveal
+<span class="ts">[181.6s-182.9s]</span> <span class="tag">[speech]</span> The man speaks with an open mouth and bright expression, gesturing slightly with his right hand
+   &lt;speech&gt;&quot;In the moment I love it.&quot;&lt;/speech&gt;
+<span class="ts">[182.4s-191.0s]</span> <span class="tag">[visual]</span> Black screen with the &quot;The Legend of Zelda: Tears of the Kingdom&quot; logo in white and green, featuring a sword through the &quot;Z&quot;, and a red Nintendo Switch logo in the top left corner
+<span class="ts">[183.1s-186.7s]</span> <span class="tag">[speech]</span> The man speaks with an excited expression, mouth open, eyes wide, looking directly at the camera
+   &lt;speech&gt;&quot;Finding out it&#x27;s in May is great because that&#x27;s a hard date.&quot;&lt;/speech&gt;
+<span class="ts">[186.7s-189.5s]</span> <span class="tag">[speech]</span> The man continues speaking, head slightly tilted, maintaining eye contact with the camera
+   &lt;speech&gt;&quot;It&#x27;s a little further away than I would like, but it&#x27;s a hard date.&quot;&lt;/speech&gt;
+<span class="ts">[189.5s-190.9s]</span> <span class="tag">[speech]</span> The man speaks with a hopeful expression, mouth open, nodding slightly
+   &lt;speech&gt;&quot;Hopefully no more delays.&quot;&lt;/speech&gt;
+<span class="ts">[191.0s-197.0s]</span> <span class="tag">[visual]</span> Black screen with the date &quot;5.12.2023&quot; in gold, textured font centered
+<span class="ts">[191.5s-194.6s]</span> <span class="tag">[speech]</span> The man speaks with a thoughtful expression, hand near his face, eyes slightly narrowed
+   &lt;speech&gt;&quot;Um, but you know, that&#x27;s, that&#x27;s what that is.&quot;&lt;/speech&gt;
+<span class="ts">[194.6s-196.9s]</span> <span class="tag">[speech]</span> The man speaks with wide eyes and raised right hand, expression excited and animated
+   &lt;speech&gt;&quot;And it&#x27;s, that was the end of the direct.&quot;&lt;/speech&gt;</pre></div></div><div class="qas"><div class="qa"><div class="q"><span class="qt">Action Counting</span> How many times do dragons appear in the video? <span class="ok">✓</span></div><div class="opt gold">A. Twice. ← model</div><div class="opt">B. Four times.</div><div class="opt">C. Three times.</div><div class="opt">D. Once.</div><div class="ans">gold <b>A</b> · model <b>A</b></div></div><div class="qa"><div class="q"><span class="qt">Attribute Recognition</span> What color is the second dragon that appears in the video? <span class="ok">✓</span></div><div class="opt">A. Black and purple.</div><div class="opt gold">B. Blue and white. ← model</div><div class="opt">C. Black and red.</div><div class="opt">D. Black and white.</div><div class="ans">gold <b>B</b> · model <b>B</b></div></div><div class="qa"><div class="q"><span class="qt">Spatial Relation</span> What is the position of the dragon relative to the man with the sword? <span class="ok">✓</span></div><div class="opt">A. Behind and to the right of the man.</div><div class="opt">B. Behind and to the left of the man.</div><div class="opt gold">C. In front of and to the right of the man. ← model</div><div class="opt">D. In front of and to the left of the man.</div><div class="ans">gold <b>C</b> · model <b>C</b></div></div><div class="qa"><div class="q"><span class="qt">Emotion Change</span> How does the emotion of the man in the red short-sleeve shirt in the video change? <span class="ok">✓</span></div><div class="opt">A. From sad to calm.</div><div class="opt">B. From calm to sad.</div><div class="opt">C. From excited to calm.</div><div class="opt gold">D. From calm to excited. ← model</div><div class="ans">gold <b>D</b> · model <b>D</b></div></div></div></div><div class="card"><div class="cid">umpKoxkH · Culture &amp; Politics · 4/4 correct</div><div class="row"><div class="vidcol"><video controls preload="metadata" src="../assets/av/worldsense/umpKoxkH.mp4"></video></div><div class="capcol"><div class="caphdr">Full-video fused caption (windowed Qwen3-VL-32B grounder, 3K chars)</div><pre class="cap">OVERVIEW: Live event in a reverberant venue with clear broadcast-quality audio; two male speakers (middle-aged and young adult, United States accents, English) engage in a back-and-forth exchange punctuated by audience laughter and applause.
+
+AUDIO-VISUAL TIMELINE (visually grounded; &lt;text&gt;=on-screen text; &lt;speech&gt;=transcript):
+<span class="ts">[0.0s-10.0s]</span> <span class="tag">[visual]</span> Split screen: top shows a man in a suit at a podium with a microphone; bottom shows a woman in the audience holding a microphone, smiling. On-screen text: &quot;ASK YOU RIGHT NOW. OKAY,&quot; then &quot;BUT YOU KNOW THAT YOU&#x27;RE A WOMAN. YES. WHAT IS THAT?&quot; <span class="ocr">&lt;text&gt;THE VERITAS FORUM&lt;/text&gt;</span> logo on microphone
+<span class="ts">[0.3s-0.8s]</span> <span class="tag">[speech]</span> A man in a suit at a podium speaks, saying &quot;Okay,&quot; while looking slightly to his right, his mouth open; the woman in the audience below smiles, holding a microphone with <span class="ocr">&lt;text&gt;THE VERITAS FORUM&lt;/text&gt;</span> logo
+   &lt;speech&gt;&quot;Okay.&quot;&lt;/speech&gt;
+<span class="ts">[0.9s-2.6s]</span> <span class="tag">[speech]</span> The man at the podium says &quot;But you know that you&#x27;re a woman,&quot; raising his right hand; the woman in the audience below smiles, holding the microphone with <span class="ocr">&lt;text&gt;THE VERITAS FORUM&lt;/text&gt;</span> logo
+   &lt;speech&gt;&quot;But you know that you&#x27;re a woman.&quot;&lt;/speech&gt;
+<span class="ts">[2.7s-3.1s]</span> <span class="tag">[speech]</span> The man at the podium says &quot;Yes,&quot; nodding slightly; the woman in the audience below continues to smile, holding the microphone with <span class="ocr">&lt;text&gt;THE VERITAS FORUM&lt;/text&gt;</span> logo
+   &lt;speech&gt;&quot;Yes.&quot;&lt;/speech&gt;
+<span class="ts">[4.1s-5.0s]</span> <span class="tag">[speech]</span> The man at the podium asks &quot;What is that?&quot; looking down and to his left, hand near his chest; the woman in the audience below smiles, holding the microphone with <span class="ocr">&lt;text&gt;THE VERITAS FORUM&lt;/text&gt;</span> logo
+   &lt;speech&gt;&quot;What is that?&quot;&lt;/speech&gt;
+<span class="ts">[5.0s-16.5s]</span> <span class="tag">[background]</span> Crowd laughter and applause as the camera remains on the split screen, then transitions to a wide shot of the audience; the woman in the audience holds the microphone with <span class="ocr">&lt;text&gt;THE VERITAS FORUM&lt;/text&gt;</span> logo
+<span class="ts">[7.2s-10.3s]</span> <span class="tag">[speech]</span> The man at the podium says &quot;I, so gender is a social thing,&quot; gesturing with his right hand; the woman in the audience below smiles, holding the microphone with <span class="ocr">&lt;text&gt;THE VERITAS FORUM&lt;/text&gt;</span> logo
+   &lt;speech&gt;&quot;I, so gender is a social thing.&quot;&lt;/speech&gt;
+<span class="ts">[10.0s-12.8s]</span> <span class="tag">[visual]</span> Split screen: the man at the podium looks down then up; the woman in the audience below smiles, holding the microphone with <span class="ocr">&lt;text&gt;THE VERITAS FORUM&lt;/text&gt;</span> logo; on-screen text: &quot;WHAT IS A WOMAN?&quot;
+<span class="ts">[10.5s-12.0s]</span> <span class="tag">[speech]</span> The man at the podium says &quot;I don&#x27;t need that. What is a woman?&quot; looking directly at the audience; the woman in the audience below smiles, holding the microphone with <span class="ocr">&lt;text&gt;THE VERITAS FORUM&lt;/text&gt;</span> logo
+   &lt;speech&gt;&quot;I don&#x27;t need that. What is a woman?&quot;&lt;/speech&gt;
+<span class="ts">[12.3s-13.3s]</span> <span class="tag">[speech]</span> The man at the podium repeats &quot;What is a woman?&quot; with a more intense tone, gesturing with his right hand; the woman in the audience below smiles, holding the microphone with <span class="ocr">&lt;text&gt;THE VERITAS FORUM&lt;/text&gt;</span> logo
+   &lt;speech&gt;&quot;What is a woman?&quot;&lt;/speech&gt;
+<span class="ts">[12.9s-17.0s]</span> <span class="tag">[visual]</span> Wide shot of the audience seated in rows, some turning to look at the speaker; the woman in the audience holds the microphone with <span class="ocr">&lt;text&gt;THE VERITAS FORUM&lt;/text&gt;</span> logo
+<span class="ts">[13.5s-14.4s]</span> <span class="tag">[speech]</span> The man at the podium says &quot;What is a woman?&quot; again; the audience is visible in the wide shot
+   &lt;speech&gt;&quot;What is a woman?&quot;&lt;/speech&gt;
+<span class="ts">[14.4s-16.0s]</span> <span class="tag">[speech]</span> The man at the podium says &quot;Word woman, define in the dictionary, go,&quot; gesturing with his right hand; the audience is visible in the wide shot
+   &lt;speech&gt;&quot;Word woman, define in the dictionary, go.&quot;&lt;/speech&gt;
+
+ON-SCREEN TEXT (OCR): THE VERITAS FORUM</pre></div></div><div class="qas"><div class="qa"><div class="q"><span class="qt">Human Emotions</span> What emotion is the man in the blue suit showing in the video? <span class="ok">✓</span></div><div class="opt">A. Calmness.</div><div class="opt gold">B. Excitement. ← model</div><div class="opt">C. Dullness.</div><div class="opt">D. Pain.</div><div class="ans">gold <b>B</b> · model <b>B</b></div></div><div class="qa"><div class="q"><span class="qt">Video Emotions</span> What is the emotion conveyed in the video? <span class="ok">✓</span></div><div class="opt">A. Indifferent.</div><div class="opt gold">B. Passionate. ← model</div><div class="opt">C. Composed.</div><div class="opt">D. Dull.</div><div class="ans">gold <b>B</b> · model <b>B</b></div></div><div class="qa"><div class="q"><span class="qt">Event Recognition</span> What are the two men discussing in the video? <span class="ok">✓</span></div><div class="opt">A. The distinction between women and men.</div><div class="opt gold">B. The definition of femininity. ← model</div><div class="opt">C. The origins of women.</div><div class="opt">D. The way to write about women.</div><div class="ans">gold <b>B</b> · model <b>B</b></div></div><div class="qa"><div class="q"><span class="qt">Audio Counting</span> How many times is &quot;what is a woman&quot; mentioned in the video? <span class="ok">✓</span></div><div class="opt">A. Five.</div><div class="opt gold">B. Three. ← model</div><div class="opt">C. Two.</div><div class="opt">D. Four.</div><div class="ans">gold <b>B</b> · model <b>B</b></div></div></div></div></body></html>
