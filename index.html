@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Iterative Timestamped Audio Describer — Interactive Demos</title>
+<style>
+  :root{
+    --ink:#1a1d21; --muted:#5b636b; --line:#e6e8eb; --bg:#fbfbfc; --card:#ffffff;
+    --accent:#0f7c73; --accent-soft:#e6f4f2;
+    --shadow:0 1px 2px rgba(20,24,28,.04), 0 6px 20px rgba(20,24,28,.05);
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.6; font-size:16px; -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:980px; margin:0 auto; padding:0 22px}
+  header.hero{padding:64px 0 26px; border-bottom:1px solid var(--line)}
+  .eyebrow{color:var(--accent); font-weight:600; letter-spacing:.08em; text-transform:uppercase; font-size:12.5px; margin:0 0 12px}
+  h1{font-size:2.15rem; line-height:1.18; margin:0 0 12px; letter-spacing:-.01em}
+  .tagline{font-size:1.12rem; color:var(--muted); margin:0 0 22px; max-width:70ch}
+  .abstract{font-size:1rem; color:#333; max-width:74ch; margin:0}
+  .abstract b{color:var(--ink)}
+  section.group{padding:40px 0 8px; border-bottom:1px solid var(--line)}
+  .group h2{font-size:1.28rem; margin:0 0 6px; letter-spacing:-.01em}
+  .group .lead{color:var(--muted); margin:0 0 22px; max-width:76ch}
+  .grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px; padding-bottom:16px}
+  @media(max-width:720px){ .grid{grid-template-columns:1fr} h1{font-size:1.8rem} }
+  a.card{display:flex; flex-direction:column; text-decoration:none; color:inherit;
+    background:var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:18px 18px 16px; box-shadow:var(--shadow); transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;}
+  a.card:hover{transform:translateY(-2px); border-color:#cfd4d8; box-shadow:0 2px 4px rgba(20,24,28,.05),0 12px 30px rgba(20,24,28,.09)}
+  .tag{align-self:flex-start; font-size:11.5px; font-weight:600; letter-spacing:.03em; color:var(--accent);
+       background:var(--accent-soft); border-radius:999px; padding:3px 10px; margin-bottom:11px}
+  .card h3{font-size:1.02rem; margin:0 0 7px; line-height:1.3}
+  .card p{font-size:.92rem; color:var(--muted); margin:0 0 14px; flex:1}
+  .open{font-size:.9rem; font-weight:600; color:var(--accent)}
+  .open::after{content:" \2197"}
+  footer{padding:34px 0 60px; color:var(--muted); font-size:.86rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <p class="eyebrow">Interactive Demos</p>
+    <h1>Iterative Timestamped Audio Describer</h1>
+    <p class="tagline">A perception foundation model that turns raw audio into an explicit, timestamped, speaker-attributed structured description &mdash; then reasons and generates from that description alone.</p>
+    <p class="abstract">We decouple <b>perception</b> from <b>reasoning</b>. The describer writes what it hears as a readable schema (events, timings, transcript, speaker profile, stress, emotion, acoustics), built up one pass at a time. A frozen text-only model then answers questions from the description, and a generator renders the same description back into controllable audio. Each card below opens a live, audio-synced viewer.</p>
+  </header>
+
+  <section class="group">
+    <h2>1&nbsp;&middot;&nbsp;The Describer: iterative structured perception</h2>
+    <p class="lead">One clip, described pass by pass. A structural caption is written first, then each speech attribute is layered on, each pass conditioned on the previous output through the Instruction-Input-Output format.</p>
+    <div class="grid">
+      <a class="card" href="viewers/describer_passes.html">
+        <span class="tag">Multi-pass describing</span>
+        <h3>One clip, built up pass by pass</h3>
+        <p>A single clip described incrementally: the structural caption (diarized turns, timestamps, non-speech scene) first, then word stress and intonation, per-turn emotion, speaker profile, and acoustic dynamics.</p>
+        <span class="open">Open demo</span>
+      </a>
+      <a class="card" href="viewers/describer_teacherforce.html">
+        <span class="tag">Control surface</span>
+        <h3>Teacher-forced passes across clips</h3>
+        <p>Seven clips showing the inference control surface: a free caption plus teacher-forced passes for stress, emotion, speaker profile, and acoustics, each synced to the audio.</p>
+        <span class="open">Open demo</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="group">
+    <h2>2&nbsp;&middot;&nbsp;Generation: description &rarr; controllable audio</h2>
+    <p class="lead">The same structured description is renderable. A text-to-audio generator conditioned on it reproduces event timing and gives explicit, zero-shot control over emphasis and speaker attributes.</p>
+    <div class="grid">
+      <a class="card" href="viewers/gen_temporal_grounding.html">
+        <span class="tag">Temporal grounding</span>
+        <h3>Events land at the stated times</h3>
+        <p>Audio generated from a caption places each event at its timestamp. Two frame-level localizers (FLAM, PE-A-Frame) compare against a no-timestamp baseline, with the original recording as reference.</p>
+        <span class="open">Open demo</span>
+      </a>
+      <a class="card" href="viewers/gen_emphasis.html">
+        <span class="tag">Word-level emphasis</span>
+        <h3>Emphasis follows the marker</h3>
+        <p>Move the emphasis marker across words in the caption, regenerate, and re-detect the stressed word: the synthesized emphasis tracks the commanded word.</p>
+        <span class="open">Open demo</span>
+      </a>
+      <a class="card" href="viewers/gen_attributes.html">
+        <span class="tag">Attribute control</span>
+        <h3>Accent, age, and emphasis, zero-shot</h3>
+        <p>A single generator gives explicit control over speaker accent, age, and word emphasis directly from the caption text.</p>
+        <span class="open">Open demo</span>
+      </a>
+      <a class="card" href="viewers/gen_reconstruction.html">
+        <span class="tag">Reconstruction</span>
+        <h3>Real &rarr; description &rarr; re-generated</h3>
+        <p>A real clip, the structured description it produces, and audio re-generated from that description alone, shown side by side as spectrograms.</p>
+        <span class="open">Open demo</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="group">
+    <h2>3&nbsp;&middot;&nbsp;Extension: audio-visual reasoning</h2>
+    <p class="lead">The audio describer plugs into an off-the-shelf visual grounder, and a frozen reasoner answers from the fused audio-visual description alone. A few showcase clips per benchmark.</p>
+    <div class="grid">
+      <a class="card" href="viewers/av_dailyomni.html">
+        <span class="tag">Daily-Omni</span>
+        <h3>Everyday audio-visual scenes</h3>
+        <p>Video, the fused audio-visual description, and per-question answers with gold comparisons.</p>
+        <span class="open">Open demo</span>
+      </a>
+      <a class="card" href="viewers/av_videoholmes.html">
+        <span class="tag">Video-Holmes</span>
+        <h3>Long-form suspense reasoning</h3>
+        <p>One to five minute films: a windowed audio-visual description feeds multi-option reasoning questions.</p>
+        <span class="open">Open demo</span>
+      </a>
+      <a class="card" href="viewers/av_worldsense.html">
+        <span class="tag">WorldSense</span>
+        <h3>Real-world, eight domains</h3>
+        <p>A real-world audio-visual benchmark across eight domains: fused description and four-option answers.</p>
+        <span class="open">Open demo</span>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    Interactive viewers run entirely in the browser from local assets. Understanding demos (describe-then-reason on MMSU and MSU-Bench) are being added. This page accompanies the paper submission and is updated as the work develops.
+  </footer>
+
+</div>
+</body>
+</html>
