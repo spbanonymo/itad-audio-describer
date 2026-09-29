@@ -45,7 +45,7 @@
   <header class="hero">
     <p class="eyebrow">Interactive Demos</p>
     <h1>Iterative Timestamped Audio Describer</h1>
-    <p class="tagline">A perception foundation model that turns raw audio into an explicit, timestamped, speaker-attributed structured description.</p>
+    
   </header>
 
   <section class="group">
@@ -54,7 +54,7 @@
       <a class="card" href="viewers/describer_passes.html">
         <span class="tag">Multi-pass describing</span>
         <h3>One clip, built up pass by pass</h3>
-        <p>A single clip described incrementally: the structural caption (diarized turns, timestamps, non-speech scene) first, then word stress and intonation, per-turn emotion, speaker profile, and acoustic dynamics.</p>
+        
         <span class="open">Open demo</span>
       </a>
     </div>
@@ -62,37 +62,32 @@
 
   <section class="group">
     <h2>2&nbsp;&middot;&nbsp;Understanding: describe, then reason</h2>
-    <p class="lead">The description is read by a frozen text-only reasoner that never hears the audio, so downstream accuracy measures how much the description actually captures.</p>
+    
 
-    <div class="subhead">Spoken audio</div>
     <div class="grid">
-      <a class="card" href="viewers/understand_mmsu.html">
-        <span class="tag">MMSU</span>
-        <h3>Describe-then-reason on spoken audio</h3>
-        <p>Five clips where the evidence for the answer is present in the description: the model's structured description, and the answer a frozen reasoner picks from that description alone (speaker counting, turn counting, non-speech sound, accent, age).</p>
-        <span class="open">Open demo</span>
-      </a>
-    </div>
+<a class="card" href="viewers/understand_all.html">
+<span class="tag">MMSU · MSU-Bench · Daily-Omni · Video-Holmes</span>
+<h3>Describe-then-reason across four benchmarks</h3>
 
-    <div class="subhead">Audio-visual</div>
-    <div class="grid">
-      <a class="card" href="viewers/av_combined.html">
-        <span class="tag">Daily-Omni &middot; Video-Holmes</span>
-        <h3>Audio-visual reasoning</h3>
-        <p>The audio describer plus an off-the-shelf visual grounder produce one fused, timestamped description; a frozen reasoner answers from it alone. Six clips, each with the reasoning trace that cites the exact timestamped evidence.</p>
-        <span class="open">Open demo</span>
-      </a>
-    </div>
-  </section>
+<span class="open">Open demo</span>
+</a>
+</div>
+</section>
 
   <section class="group">
     <h2>3&nbsp;&middot;&nbsp;Generation: description &rarr; controllable audio</h2>
-    <p class="lead">The same structured description is renderable. A text-to-audio generator conditioned on it gives explicit, zero-shot control over word-level emphasis directly from the caption text.</p>
+    
     <div class="grid">
       <a class="card" href="viewers/gen_emphasis.html">
         <span class="tag">Word-level emphasis</span>
         <h3>Emphasis follows the marker</h3>
-        <p>Move the emphasis marker across words in the caption, regenerate, and re-detect the stressed word: the synthesized emphasis tracks the commanded word.</p>
+        
+        <span class="open">Open demo</span>
+      </a>
+      <a class="card" href="viewers/gen_reconstruction.html">
+        <span class="tag">Reconstruction</span>
+        <h3>Real &rarr; description &rarr; re-generated</h3>
+        
         <span class="open">Open demo</span>
       </a>
     </div>
